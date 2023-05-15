@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>GoMovie!</title>
+    <link rel="icon" href="../assets/img/favicon.ico" th:href="@{/assets/img/favicon.ico}"/>
+    <link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet" />
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body>
+
+    <nav>
+        <div class="nav-bar">
+            <i class='bx bx-menu sidebarOpen' ></i>
+            <span class="logo navLogo"><a title="inicio" th:href="@{/inicio}" id="texttttt"><img src="../assets/img/logo.png" th:src = "@{/assets/img/logo.png}" alt="" id="fotou"></a></span>
+
+            <div class="menu">
+                <div class="logo-toggle">
+                    <span class="logo"><a href="#">CodingLab</a></span>
+                    <i class='bx bx-x siderbarClose'></i>
+                </div>
+
+                <ul class="nav-links">
+                    <li><a th:href="@{/inicio}">Películas</a></li>
+                    <li><a th:href="@{/ofertas}">Ofertas</a></li>
+                    <li><a th:href="@{/lista}">Tu lista</a></li>
+                    <li><a th:href="@{/proximamente}">Próximamente</a></li>
+                </ul>
+            </div>
+
+            <div class="darkLight-searchBox">
+
+                <div class="searchBox">
+
+                    <div class="searchToggle">
+                        <i class='bx bx-x cancel bx-sm icons' style= "color:white" ></i>
+                        <i class='bx bx-search search bx-sm icons' style= "color:white"></i>
+                    </div>
+
+                    <div class="search-field">
+                        <input type="text" placeholder="Search...">
+                        <i class='bx bx-search icons'></i>
+                    </div>
+
+                </div>
+
+                <div class="searchBox">
+
+                    <a th:href="@{/perfil}" class="skr"><i class="bx bxs-user bx-sm icons" ></i></a>
+
+                </div>
+
+                <div class="searchBox">
+
+                    <a th:href="@{/}"><i class='bx bx-log-out bx-sm icons'></i></a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+    <header>
+        <div class="header-content">
+            <img th:src="@{/assets/img/rebajas.png}" class="rebaja">
+            <!--<h1><span class="rebajas">¡REBAJAS DE PRIMAVERA!</span><br><span id="rebaja">¡REBAJAS DE PRIMAVERA!</span><br><span class="rebajas">¡REBAJAS DE PRIMAVERA!</span></h1>-->
+
+        </div>
+    </header>
+
+    <div class="textos">
+
+        <h1 class="gomovie">🎁 Ofertas 🎁</h1>
+
+        <div id="separador">
+            <hr class="red-separator">
+        </div>
+
+        <p>¡Explora y encuentra los mejores descuentos de la semana aquí!</p>
+
+    </div>
+
+	<section th:if="${peliculasDestacadas.size() > 0}">
+	    <h2 class="titulillo">Top 3 rebajas</h2>
+	
+	    <table class="tabla">
+	        <thead>
+	        <tr>
+	            <th>Imagen</th>
+	            <th>Título</th>
+	            <th>Rebaja</th>
+	            <th>Precio antiguo</th>
+	            <th>Precio actual</th>
+	            <th>Género</th>
+	        </tr>
+	        </thead>
+	        <tbody>
+	        <tr th:each="pelicula : ${peliculasDestacadas}">
+	            <td><img th:src="${pelicula.foto}" class="rebajaFoto"></td>
+	            <td th:text="${pelicula.nombre}"></td>
+	            <td th:text="${pelicula.rebaja + '%'}"></td>
+	            <td class="old-price" th:text="${pelicula.precio} + '€'"></td>
+	            <td class="price" th:text="${preciosFinales.get(pelicula)} + '€'"></td>
+	            <td th:text="${pelicula.genero.nombre}"></td>
+	        </tr>
+	
+	        </tbody>
+	    </table>
+	
+	
+	    <main id="mainLista" th:if="${peliculasRestantes.size() > 0}">
+	        <section class="list">
+	            <h2>Esta semana:</h2>
+	
+	            <ul>
+	                <li th:each="pelicula : ${peliculasRestantes}">>
+	                    <img th:src="${pelicula.foto}">
+	                    <div>
+	                        <h3 th:text="${pelicula.nombre}"></h3>
+	                        <p class="old-price" th:text="${pelicula.precio} + '€'"></p>
+	                        <p th:text="${preciosFinales.get(pelicula)} + '€'"></p>
+	                        <button>Comprar</button>
+	                    </div>
+	                </li>
+	            </ul>
+	        </section>
+	    </main>
+	</section>
+	
+	<section th:if="${peliculasDestacadas.size() < 1}">
+		<h1>No hay ofertas disponibles!</h1>
+	</section>
+    
+	<footer th:replace="index :: footer"></footer>
+
+    <script src="js/main.js"></script>
+
+
+</body>
+</html>

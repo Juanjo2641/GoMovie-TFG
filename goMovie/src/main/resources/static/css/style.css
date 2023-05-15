@@ -1,0 +1,1605 @@
+
+    /* -------- FUENTES -------- */
+    @font-face {
+        font-family: netf;
+        src: url('../static/css/fonts/BebasNeue-Regular.ttf');
+    }
+
+    /* -------- NAVBAR -------- */
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+        transition: all 0.4s ease;;
+    }
+
+    #fotou{
+        width: 65px;
+        margin-top: 15px;
+        margin-right: 50px;
+    }
+
+    nav{
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 70px;
+        width: 100%;
+        background-color: #1d1d1d;
+        z-index: 100;
+    }
+
+    nav .nav-bar{
+        position: relative;
+        height: 100%;
+        max-width: 1000px;
+        width: 100%;
+        background-color: #1d1d1d;
+        margin: 0 auto;
+        padding: 0 30px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    nav .nav-bar .sidebarOpen{
+        color: #CCC;
+        font-size: 25px;
+        padding: 5px;
+        cursor: pointer;
+        display: none;
+    }
+
+    nav .nav-bar .logo a{
+        font-size: 25px;
+        font-weight: 500;
+        color: #CCC;
+        text-decoration: none;
+    }
+
+    .menu .logo-toggle{
+        display: none;
+    }
+
+	.container-login{
+	background-image: url("../assets/img/background-login.jpg");
+	object-fit: cover;
+	height: 80vh;
+	padding-top: 2vh ;
+	
+	}
+
+	.container-login-int{
+			margin: auto;
+			background-color: black;
+			width: 35vw;
+			height: 30wh;		
+			border-radius: 15px;
+			box-shadow: 7px 10px #EC1313;
+		}
+	
+    .login-btn {
+      display: flex;
+      margin:auto;
+      justify-content: center;
+      align-items: center;
+      background-color: red;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    .login-btn a {
+      text-decoration: none;
+      color: white;
+    }
+
+    .login-btn a:hover {
+      text-decoration: none;
+      color: white;
+    }
+
+    .nav-bar .nav-links{
+        display: flex;
+        align-items: center;
+    }
+
+    .nav-bar .nav-links li{
+        margin: 0 5px;
+        list-style: none;
+    }
+
+    .nav-links li a{
+        position: relative;
+        font-size: 17px;
+        font-weight: 400;
+        color: white;
+        text-decoration: none;
+        padding: 10px;
+    }
+
+    .nav-links li a::before{
+        content: '';
+        position: absolute;
+        left: 50%;
+        bottom: 0;
+        transform: translateX(-50%);
+        height: 6px;
+        width: 6px;
+        border-radius: 50%;
+        background-color: red;
+        opacity: 0;
+        transition: all 0.3s ease;
+    }
+
+    .nav-links li:hover a::before{
+        opacity: 1;
+    }
+
+    .nav-bar .darkLight-searchBox{
+        display: flex;
+        align-items: center;
+    }
+
+    .darkLight-searchBox .searchToggle{
+        height: 40px;
+        width: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 5px;
+        margin-left: 15px;
+    }
+
+    /* -color blanco a los iconos */
+    .bx{
+        color: #fff;
+        padding-right: 3px;
+        padding-left:3px;
+    }
+
+    .bxs-user{
+        margin-top:3.5px;
+    }
+
+    .textoLog{
+        text-decoration: none;
+    }
+
+    .textoLog:hover{
+        color:red;
+    }
+
+    .bx-log-out{
+        margin-top:2.5px;
+        margin-left:5px;
+    }
+    
+    .searchBox .searchToggle, 
+    .searchBox .search-field{
+    	color:white;
+    }
+
+    .icons{
+    	color: white;
+    }
+    
+   	.icons:hover{
+    	color:red !important; 
+    }
+
+    .dark-light i,
+    .searchToggle i{
+        position: absolute;
+        color: #CCC;
+        font-size: 22px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .searchToggle i.cancel{
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    .searchToggle.active i.cancel{
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    .searchToggle.active i.search{
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    .searchBox{
+        position: relative;
+    }
+
+    .searchBox .search-field{
+        position: absolute;
+        bottom: -85px;
+        right: 5px;
+        height: 50px;
+        width: 300px;
+        display: flex;
+        align-items: center;
+        color:white;
+        padding: 3px;
+        border-radius: 6px;
+        box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
+        opacity: 0;
+        pointer-events: none;
+        transition: all 0.3s ease;
+    }
+
+    .searchToggle.active ~ .search-field{
+        bottom: -74px;
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    .search-field::before{
+        content: '';
+        position: absolute;
+        right: 14px;
+        top: -4px;
+        height: 12px;
+        width: 12px;
+        background-color: ;
+        transform: rotate(-45deg);
+        z-index: -1;
+    }
+
+    .search-field input{
+        height: 100%;
+        width: 100%;
+        padding: 0 45px 0 15px;
+        outline: none;
+        border: none;
+        border-radius: 4px;
+        font-size: 14px;
+        font-weight: 400;
+        color: grey;
+        background-color: black;
+    }
+
+    .search-field i{
+        position: absolute;
+        color: #fff;
+        right: 15px;
+        font-size: 22px;
+        cursor: pointer;
+    }
+
+    /* -------- GENERAL -------- */
+
+    h1 {
+        color: white;
+        text-align: center;
+        margin-top: 0;
+        font-size: 3rem;
+        font-weight: bold;
+        text-shadow: 2px 2px 0px #000;
+    }
+
+    body{
+        font-family: 'netf';
+        width: 100%;
+    }
+
+    *
+     {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+     }
+
+    body {
+        font-family: 'neft', sans-serif;
+        font-size: 16px;
+        line-height: 1.5;
+        color: #fff;
+        background-color: #000;
+    }
+
+    /* -------- SECCIÓN INICIO -------- */
+    .ulul{
+        display: block;
+        margin: auto;
+    }
+
+    .dropbtn {
+        background-color: #4CAF50;
+        color: white;
+        padding: 16px;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
+    }
+
+    .titulos{
+        text-align: left;
+        margin-left: 40px;
+    }
+
+    /* The container <div> - needed to position the dropdown content */
+    .dropdown {
+        position: relative;
+        display: inline-block;
+        text-align: center;
+    }
+
+    /* Dropdown Content (Hidden by Default) */
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    }
+
+    /* Links inside the dropdown */
+    .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+    /* Change color of dropdown links on hover */
+    .dropdown-content a:hover {background-color: #f1f1f1}
+
+    /* Show the dropdown menu on hover */
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+    /* Change the background color of the dropdown button when the dropdown content is shown */
+    .dropdown:hover .dropbtn {
+        background-color: #3e8e41;
+    }
+
+    #mainInicio {
+        padding: 3px 20px 20px 20px;
+    }
+
+    #mainInicio h1{
+        text-align: left;
+    }
+
+    .my-button {
+
+        background-color: red;
+        color: white;
+        font-size: 1.2rem;
+        padding: 5px 10px;
+        border: none;
+        border-radius: 5px;
+        box-shadow: 0px 0px 5px rgba(255, 255, 255, 0.3);
+        font-weight: bold;
+        font-size: 15px;
+    }
+
+    .dropdown button{
+        display: block;
+        margin: auto;
+    }
+
+    .my-button:hover {
+      background-color: white;
+      color: red;
+      box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.5);
+    }
+
+    .red-separator {
+        border: none;
+        border-top: 2px solid red;
+        width: 220px;
+        margin: 0 auto;
+    }
+
+    #separador{
+        margin-top: 15px;
+    }
+
+    .textos{
+        padding-top: 35px;
+        text-align: center;
+    }
+
+    .gomovie{
+        color: #ffffff;
+        text-shadow: 0 0 0.3em #ff0000, 0 0 0.3em #ff0000;
+    }
+
+    .gameover{
+        font-size: 20px;
+    }
+
+    .textos p{
+        margin-top: 10px;
+    }
+
+    .categorias{
+        /*
+        text-align: right;
+        margin-right: 40px;*/
+        text-align: left;
+        margin-left: 40px;
+    }
+
+
+    .row {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        margin-bottom: 20px;
+        width: 100%;
+    }
+
+    .producto {
+        background-color: #1d1d1d;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        margin: 10px;
+        padding: 10px;
+        text-align: center;
+        width: 30%;
+    }
+
+    .producto img {
+        display: block;
+        width: 90%;
+        margin: auto;
+        padding-top: 5px;
+    }
+
+    .producto h2 {
+        margin: 10px 0 0;
+    }
+
+    /* - SLIDESHOW */
+    #slideshow {
+        position: relative;
+        width: auto;
+        height: 650px;
+        background-color: black;
+        padding-top: 70px;
+    }
+
+    #slideshow img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0;
+        transition: opacity 1s;
+    }
+
+    .nav-buttons {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 2rem;
+        box-sizing: border-box;
+        opacity: 0.8;
+    }
+
+    .prev-button,
+    .next-button {
+        background-color: black;
+        border-radius: 30px;
+        border: none;
+        color: white;
+        font-size: 3rem;
+        cursor: pointer;
+        font-weight: bold;
+        padding: 10px;
+    }
+
+    .prev-button {
+        transform: translateX(-50%);
+    }
+
+    .next-button {
+        transform: translateX(50%);
+    }
+
+     /* SECCIÓN LOGIN*/
+
+    .logo-login{
+        height: 150px;
+        width: 150px;
+        display: block;
+        margin: auto;
+
+    }
+
+    .form-login{
+        width: 50%;
+        height: 40vh;
+        text-align: center;
+        margin: 0 10% 10% 25%;
+        
+
+    }
+
+    .form-control-email{
+    
+        margin-top: 20vh;
+    }
+
+    .form-control{
+        display: block;
+       
+		
+        width: 17vw;
+        color: white;
+        padding: 0.375rem 0.75rem;
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5;
+        border-radius: 0.25rem;
+        background-color: #1d1d1d;
+
+    }
+
+
+    .btn{
+        color: #fff;
+        background-color: #ff0000;
+        text-align: center;
+        width: 10vw;
+        height: 6vh;
+        border-radius: 10px;
+        margin: 10px 0;
+    }
+
+    #register{
+    color:red;
+    display:block;
+
+    }
+
+ 
+
+    #headerLista {
+      height: 600px;
+      /*background-image: url("../assets/img/guards.webp");*/
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      margin-bottom: 40px;
+    }
+
+    /* -------- MODIFICAR PERFIL -------- */
+    .inputPerfil{
+        display: block;
+        width: 20vw;
+        color: white;
+        padding: 0.375rem 0.75rem;
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5;
+        border-radius: 0.25rem;
+        background-color: #474545;
+    }
+
+    /* -------- SECCIÓN ofertas -------- */
+    .titulillo{
+        margin: 20px 0 0 7.5%;
+        margin-left: ;
+        font-style: italic;
+    }
+
+    .rebaja{
+       box-shadow: 5px 5px 10px rgba(255, 255, 255, 0.5);
+       transform: rotate(-3.5deg);
+
+    }
+
+    .tabla {
+        border-collapse: collapse;
+        margin: 0 auto;
+        width: 85%;
+    }
+
+    .tabla td, .tabla th {
+        padding: 10px;
+        text-align: left;
+        vertical-align: middle;
+    }
+
+    .tabla th{
+        background-color: red;
+    }
+
+    .tabla img {
+        display: block;
+        height: auto;
+        max-width: 100%;
+    }
+
+    .price {
+        font-weight: bold;
+    }
+
+    .old-price {
+        color: #999;
+        text-decoration: line-through;
+    }
+
+    #rebaja{
+        color: white;
+        text-align: center;
+        margin-top: 0;
+        font-size: 2.5rem;
+        font-weight: bold;
+        text-shadow: 2px 2px 0px #000;
+    }
+
+    .rebajas{
+        color: red;
+    }
+
+    .rebajaFoto{
+        width: 230px;
+        margin-top: 60px;
+        padding: 20px;
+    }
+    
+    .header-content {
+        margin-top: 70px;
+        height: 600px;
+        background-image: url("../assets/img/gif.gif");
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+    }
+
+    .header-content h1 {
+      top: 0;
+      left: 0;
+      z-index: 1;
+      color: #ffffff;
+      padding: 20px;
+    }
+
+    .pelicula-info {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .pelicula-cover {
+      width: 150px;
+      height: 200px;
+      margin-right: 20px;
+    }
+
+    .pelicula-details {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .pelicula-title {
+      font-size: 48px;
+      margin: 0 0 20px 0;
+    }
+
+    .pelicula-description {
+      font-size: 18px;
+      margin: 0 0 20px 0;
+    }
+
+    .pelicula-genre {
+      font-size: 16px;
+      margin: 0 0 20px 0;
+    }
+
+    .watch-now-btn {
+      background-color: red;
+      color: white;
+      font-size: 20px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    
+    .contenedor {
+        width: 90%;
+        margin: auto;
+    }
+
+    /* ---- ----- ----- Pelicula Principal ----- ----- ----- */
+    .pelicula-principal {
+        font-size: 16px;
+        min-height: 40.62em;
+        color: #fff;
+        background: linear-gradient(rgba(0, 0, 0, .50) 0%, rgba(0,0,0,.50) 100%),url("../assets/img/guards.webp");
+        background-position: center center;
+        background-size: cover;
+        display: flex;
+        align-items: end;
+    }
+
+    .pelicula-principal .contenedor {
+        margin: 0 auto;
+        margin-bottom: 6.25em;
+    }
+
+    .pelicula-principal .titulo {
+        font-weight: 600;
+        font-size: 3.12em;
+        margin-bottom: 0.4em;
+    }
+
+    .pelicula-principal .descripcion {
+        font-weight: normal;
+        font-size: 1em;
+        line-height: 1.75em;
+        max-width: 50%;
+        margin-bottom: 1.25em;
+    }
+
+    .pelicula-principal .boton {
+        background-color: #e50914;
+        color: white;
+        padding: 16px;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
+        border-radius: 8px;
+    }
+
+    .boton a{
+        text-decoration: none;
+        color: white;
+    }
+
+
+    .pelicula-principal .botonn {
+        background-color: black;
+        color: white;
+        padding: 16px;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
+        border-radius: 8px;
+    }
+
+    .pelicula-principal .botonn:hover{
+        background: #fff;
+        color: #000;
+    }
+
+    .pelicula-principal .boton:hover{
+        background: #fff;
+        color: red;
+    }
+
+
+    /* ---- ----- ----- Contenedor Titulo y Controles ----- ----- ----- */
+    .contenedor-titulo-controles {
+        display: flex;
+        justify-content: space-between;
+        align-items: end;
+    }
+
+    .contenedor-titulo-controles h3 {
+        color: #fff;
+        font-size: 30px;
+    }
+
+    .contenedor-titulo-controles .indicadores button {
+        background: #fff;
+        height: 3px;
+        width: 10px;
+        cursor: pointer;
+        border: none;
+        margin-right: 2px;
+    }
+
+    .contenedor-titulo-controles .indicadores button:hover,
+    .contenedor-titulo-controles .indicadores button.activo {
+        background: red;
+    }
+
+
+    /* ---- ----- ----- Contenedor Principal y Flechas ----- ----- ----- */
+    .peliculas-recomendadas {
+        margin-bottom: 70px;
+    }
+
+    .peliculas-recomendadas .contenedor-principal {
+        display: flex;
+        align-items: center;
+        position: relative;
+    }
+
+    .peliculas-recomendadas .contenedor-principal .flecha-izquierda,
+    .peliculas-recomendadas .contenedor-principal .flecha-derecha {
+        position: absolute;
+        border: none;
+        background: rgba(0,0,0,0.3);
+        font-size: 40px;
+        height: 50%;
+        top: calc(50% - 25%);
+        line-height: 40px;
+        width: 50px;
+        color: #fff;
+        cursor: pointer;
+        z-index: 500;
+        transition: .2s ease all;
+    }
+
+    .peliculas-recomendadas .contenedor-principal .flecha-izquierda:hover,
+    .peliculas-recomendadas .contenedor-principal .flecha-derecha:hover {
+        background: rgba(0,0,0, .9);
+    }
+
+    .peliculas-recomendadas .contenedor-principal .flecha-izquierda {
+        left: 0;
+    }
+
+    .peliculas-recomendadas .contenedor-principal .flecha-derecha {
+        right: 0;
+    }
+
+    /* ---- ----- ----- Carousel ----- ----- ----- */
+    .peliculas-recomendadas .contenedor-carousel {
+        width: 100%;
+        padding: 20px 0;
+        overflow: hidden;
+        scroll-behavior: smooth;
+    }
+
+    .peliculas-recomendadas .contenedor-carousel .carousel {
+        display: flex;
+        flex-wrap: nowrap;
+    }
+
+    .peliculas-recomendadas .contenedor-carousel .carousel .pelicula {
+        min-width: 20%;
+        transition: .3s ease all;
+        box-shadow: 5px 5px 10px rgba(0,0,0, .3);
+    }
+
+    .peliculas-recomendadas .contenedor-carousel .carousel .pelicula.hover {
+        transform: scale(1.2);
+        transform-origin: center;
+    }
+
+    .peliculas-recomendadas .contenedor-carousel .carousel .pelicula img {
+        width: 100%;
+        vertical-align: top;
+    }
+
+
+
+    /* -------- SECCIÓN TU LISTA -------- */
+
+    #headerLista {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #141414;
+      margin-top: 70px;
+    }
+
+    #mainLista {
+      width: 90%;
+      margin: 0 auto;
+      padding: 40px;
+      padding-top: 70px;
+      text-align: center;
+    }
+
+    .list {
+      margin-bottom: 40px;
+    }
+
+    .list ul {
+      display: flex;
+      list-style: none;
+      overflow-x: auto;
+    }
+
+    .list ul li {
+        margin-right: 20px;
+    }
+
+    .list ul li:last-child {
+      margin-right: 0;
+    }
+
+    .list img {
+      width: 150px;
+      height: 225px;
+      object-fit: cover;
+    }
+
+    .list div {
+    }
+
+    .list h3 {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    .list h2 {
+      font-size: 24px;
+      margin-bottom: 5px;
+      text-align: left;
+      font-style: italic;
+    }
+
+    .list p {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .list button {
+      background-color: #e50914;
+      color: #fff;
+      font-size: 18px;
+      font-weight: bold;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    /* -------- SECCIÓN PRÓXIMAMENTE -------- */
+
+
+
+    @media only screen and (max-width: 768px) {
+      #mainLista {
+        padding: 20px;
+      }
+      .list ul {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .list ul li {
+        margin-right: 0;
+        margin-bottom: 20px;
+      }
+      .list img {
+        width: 100%;
+        height: auto;
+      }
+      .list div {
+        margin-left: 0;
+        text-align: center;
+      }
+    }
+    
+	/* -------- SECCIÓN DETALLES -------- */
+
+	.container-detalles{
+	    padding-top: 30px;
+	    margin: 10vh 1vw 4vh 1vw;
+	    overflow: hidden;
+	}
+	
+	.img-detalles{
+	    height: 80vh;
+	    width: 30vw;
+	    margin: 1vh 1vw 1vh 2vw;
+	    float: left;
+	}
+	
+	.detalle{
+	    margin-left: 35vw;
+	}
+
+	.container-detalles h1{
+	    text-align: left;
+	}
+
+
+    /* -------- FOOTER -------- */
+    footer {
+        background-color: #1d1d1d;
+        color: #fff;
+        padding: 40px 0;
+    }
+
+    footer h3{
+        color: white;
+    }
+
+    .container-footer {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+        color: #ff0000;
+    }
+
+	.header-index h1 {	
+        position: relative;
+        color: #ffffff;
+        font-size: 14rem;
+        text-align: center;
+    }
+
+    .footer-links {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-bottom: 20px;
+    }
+
+    .footer-links a {
+        color: #fff;
+        text-decoration: none;
+        margin-right: 20px;
+        margin-bottom: 10px;
+    }
+
+    .footer-links a:hover {
+        color: #ff0000;
+    }
+
+    .footer-extendables {
+        display: flex;
+        justify-content: space-between;
+        margin-left: 10%;
+    }
+
+    .extendable {
+        flex-basis: 30%;
+        text-align: start;
+    }
+
+    .extendable h3 {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+
+    .extendable ul {
+        list-style-type: none;
+    }
+
+    .extendable ul li {
+        margin-bottom: 5px;
+    }
+
+    .extendable ul li a {
+        color: #aaa;
+        text-decoration: none;
+    }
+
+    .extendable ul li a:hover {
+        color: #ff0000;
+    }
+
+    .imagen{
+        width: 20px;
+    }
+
+    .text{
+        text-align: center;
+    }
+    /* -------- perfil -------- */
+    #fotoPerfil{
+        display: block;
+        margin: auto;
+        width: 200px;
+    }
+
+    .rowPerfil{
+        background-color: #1d1d1d;
+        padding: 20px;
+        box-shadow:
+           inset 0 -3em 3em rgba(0,0,0,0.1),
+                 0 0  0 2px rgb(255,255,255),
+                 0.3em 0.3em 1em rgba(0,0,0,0.3);
+    }
+
+    .rowPerfil b{
+        color: red;
+    }
+
+    .btn-perfil{
+        display: block;
+        margin: auto;
+        background-color: red;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-size: 16px;
+        font-weight: bold;
+    }
+
+    .btn-perfil:hover{
+        background-color: white;
+        color: red;
+    }
+
+    .titulosh2{
+        text-align : center;
+        text-decoration: underline;
+        text-shadow: 0 0 0.3em #ff0000, 0 0 0.3em #ff0000;
+    }
+
+    .profile-menu {
+      padding: 30px;
+      font-family: Arial, sans-serif;
+    }
+
+    .profile-info {
+      margin-bottom: 30px;
+    }
+
+    .profile-info p {
+      margin-bottom: 5px;
+    }
+
+    .table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        font-size: 16px;
+        font-weight: bold;
+        text-align: left;
+    }
+
+    .table th, .table td {
+        padding: 12px;
+        border: 1px solid #ddd;
+    }
+
+    .table th {
+        background-color: #E50914;
+        color: white;
+    }
+
+    tr:hover {
+        background-color: #302f2f;
+    }
+
+    .btn-perfilll{
+        display: block;
+        margin-left: 25px;
+        margin-bottom: 20px;
+        background-color: red;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-size: 16px;
+        font-weight: bold;
+    }
+
+
+    /* -------- HEADER -------- */
+    
+    .header-index {
+        position: relative;
+        height: 100vh;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 70px;
+    }
+
+	.header-index::before {    
+      content: "";
+      background-image: url("../assets/img/header-img.jpg");
+      background-size: cover;
+      position: absolute;
+      top: 0px;
+      right: 0px;
+      bottom: 0px;
+      left: 0px;
+      opacity: 0.55;
+
+}
+
+	h1 {	
+	position: relative;
+  	color: #ffffff;  
+  	font-size: 2rem;
+  	line-height: 0.9;
+  	text-align: center;
+}
+
+    .searchBox a {
+        color: white;
+    }
+
+    .searchBox a:hover{
+        color: #e50914;
+    }
+
+    .header-text {
+      text-align: center;
+      color: white;
+    }
+
+    .header-text h1 {
+      font-size: 48px;
+      margin-bottom: 30px;
+      color:white;
+      opacity:140%;
+    }
+
+    .register-btn {
+        display: flex;
+        margin:auto;
+        justify-content: center;
+        align-items: center;
+        background-color: red;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-size: 16px;
+        font-weight: bold;
+        position: relative;
+    }
+
+    #enlace{
+        color: red;
+    }
+
+    .register-btn a {
+        text-decoration: none;
+        color: white;
+    }
+
+    .register-btn a:hover {
+        text-decoration: none;
+        color: white;
+    }
+
+    /* CARDS */
+    .movie,
+    .show {
+        position: relative;
+        height: 600px;
+    }
+
+    .movie img,
+    .show img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .overlay {
+    position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    .movie-info,
+    .show-info {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+    }
+
+    .movie-info h2,
+    .show-info h2 {
+        font-size: 36px;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+
+    .movie-info p,
+    .show-info p {
+        font-size: 24px;
+        margin-bottom: 40px;
+    }
+
+    .movie-info button,
+    .show-info button {
+        padding: 10px 20px;
+        background-color: #e50914;
+        color: #fff;
+        border: none;
+        border-radius: 3px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .movie-info button:hover,
+    .show-info button:hover {
+        background-color: #fff;
+        color: #e50914;
+    }
+
+    .movie,
+    .show {
+        height: 400px;
+    }
+
+    .movie-info h2,
+    .show-info h2 {
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
+
+    .movie-info p,
+    .show-info p {
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
+
+    .movie-info button,
+    .show-info button {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+
+    /* ANIMACIONES */
+    @keyframes slide-up {
+        0% {
+            transform: translateY(100%);
+            opacity: 0;
+        }
+        100% {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+
+    .slide-up {
+        animation: slide-up 0.5s ease;
+    }
+
+    @keyframes fade-in {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+
+    .fade-in {
+        animation: fade-in 0.5s ease;
+    }
+
+    /* MEDIA QUERIES */
+    @media screen and (max-width: 768px) {
+
+        #slideshow {
+            width: 100%;
+            padding-top: 380px;
+        }
+
+        .nav-buttons {
+            visibility: hidden;
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            
+        }
+
+        .producto {
+            background-color: #1d1d1d;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin: 10px;
+            padding: 10px;
+            text-align: center;
+            width: 75%;
+        }
+
+        header {
+            background-image: url("imagenes/header-img.jpg");
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 0 50px;
+        }
+
+        header h1 {
+            font-size: 48px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+
+        header p {
+            font-size: 24px;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        header a {
+            padding: 10px 20px;
+            background-color: #e50914;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .movies {
+            width: 100%;
+            margin: 20px auto;
+          }
+          
+
+
+		/* ---- ----- ----- Ver Ahora Media Queries ----- ----- ----- */
+			   		/* ---- ----- ----- INDEX ----- ----- ----- */
+          		
+	@media screen and (max-width: 800px) {
+			
+			.header-index h1{
+				font-size: 40px;
+			}
+			
+			
+			.register-btn {
+        	margin-right:30%;
+    }
+			
+			/* -------- FOOTER -------- */
+    	footer {
+        background-color: #1d1d1d;
+        color: #fff;
+        font-size: 12px;
+        padding:10px;
+    }
+}
+		/*----------Login--------------*/
+	
+	@media screen and (max-width: 800px) {
+	
+	
+		.container-login{
+		
+		height: 80vh;
+		
+		}
+		.container-login-int{
+			margin: 4vh auto 4vh auto;
+			background-color: black;
+			width: 83vw;
+			height: 55vh;		
+			border-radius: 15px;
+			box-shadow: 7px 10px #EC1313;
+		}
+		
+		.logo-login{
+			height: 100px;
+			width: 100px;
+			display: block;
+			
+			
+        }
+			
+		
+    
+    	.form-control{
+    		display: block;
+    		margin: auto;
+    		width: 40vw;
+    		color: white;   		
+    		font-weight: 400;
+    		line-height: 1.5;
+    		border-radius: 0.25rem;
+    		background-color: #1d1d1d;  
+    		
+    	}
+    	
+    
+    	.btn{
+    		color: #fff;
+    		background-color: #ff0000;
+    		text-align: center;
+    		width: 20vw;
+    		height: 6vh;
+    		border-radius: 10px;
+    		
+    	}
+    	
+    	.register p{
+    	margin-top: 10px;
+    	}
+    
+	}
+	
+	   	    /* -------- SECCIÓN PRÓXIMAMENTE -------- */
+
+
+    @media only screen and (max-width: 768px) {
+      #mainLista {
+        padding: 20px;
+      }
+      .list ul {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .list ul li {
+        margin-right: 0;
+        margin-bottom: 20px;
+      }
+      .list img {
+        width: 100%;
+        height: auto;
+      }
+      .list div {
+        margin-left: 0;
+        text-align: center;
+      }
+    }
+		
+		
+@media screen and (max-width: 800px) {
+
+	.pelicula-principal {
+		font-size: 14px;
+	}
+
+	.pelicula-principal .descripcion {
+		max-width: 100%;
+	}
+
+	.peliculas-recomendadas .contenedor-carousel {
+		overflow: visible;
+	}
+
+	.peliculas-recomendadas .contenedor-carousel .carousel {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 20px;
+	}
+
+	.peliculas-recomendadas .indicadores,
+	.peliculas-recomendadas .flecha-izquierda,
+	.peliculas-recomendadas .flecha-derecha {
+		display: none;
+	}
+}
+
+   }
+
+
+
+
+

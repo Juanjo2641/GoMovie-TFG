@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GoMovie!</title>
+    <link rel="icon" href="../assets/img/favicon.ico" th:href="@{/assets/img/favicon.ico}"/>
+    <link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet" />
+</head>
+<body>
+<body>
+    <nav>
+        <div class="nav-bar">
+            <i class='bx bx-menu sidebarOpen' ></i>
+            <span class="logo navLogo"><a title="inicio" th:href="@{/inicio}" id="texttttt"><img src="../assets/img/logo.png" th:src = "@{/assets/img/logo.png}" alt="" id="fotou"></a></span>
+
+            <div class="darkLight-searchBox">
+
+                <div class="searchBox">
+
+                    <a th:href="@{/login}" class="textoLog">Iniciar sesión</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a th:href="@{/signup}" class="textoLog">Registrarse</a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+    <header class="header-index">
+
+    		<!-- <img id="background-index" th:src="@{/assets/img/header-img.jpg}">-->
+
+		
+		<div class="header-text">
+			<h1>¡Disfruta de tus películas<br>favoritas con GoMovie!</h1>
+            <button class="register-btn"><a th:href="@{/inicio}">Regístrate</a></button>
+        </div>
+
+    </header>
+
+
+
+
+    <footer th:fragment="footer">
+        <div class="container-footer">
+            <div class="footer-extendables">
+                <div class="extendable">
+                    <h3>Quiénes Somos</h3>
+                    <ul>
+                        <li><a href="#">Sobre Nosotros</a></li>
+                        <li><a href="#">Nuestro Equipo</a></li>
+                        <li><a href="#">Carreras</a></li>
+                    </ul>
+                </div>
+                <div class="extendable">
+                    <h3>Contacto</h3>
+                    <ul>
+                        <li><a href="#">Soporte</a></li>
+                        <li><a href="#">Preguntas Frecuentes</a></li>
+                        <li><a href="#">Contáctanos</a></li>
+                    </ul>
+                </div>
+                <div class="extendable">
+                    <h3>Términos de Uso</h3>
+                    <ul>
+                        <li><a href="#">Política de Privacidad</a></li>
+                        <li><a href="#">Términos de Uso</a></li>
+                        <li><a href="#">Aviso Legal</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+  <script src="js/script.js"></script>
+  
+</body>
+</html>
+

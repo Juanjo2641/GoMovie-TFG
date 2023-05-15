@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GoMovie!</title>
+    <link rel="icon" href="../assets/img/favicon.ico" th:href="@{/assets/img/favicon.ico}"/>
+    <link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet" />
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+<body>
+
+<div class="container p-4">
+
+    <a th:href="@{/inicio}"><img src="../static/assets/img/logo.png" th:src="@{/assets/img/logo.png}" id="fotoPerfil" /></a>
+
+
+    <div class="cositas bg-light pt-4 border border-4">
+
+        <div class="profile-menu bg-light">
+
+            <div class="profile-info">
+
+                <div class="rowPerfil">
+                    <h2 class="titulosh2">Tus datos:</h2>
+                    <br>
+                    <b>Correo electrónico:</b>
+                    <p>correo_ejemplo@ejemplo.com</p>
+                    <br>
+                    <b>Nombre:</b>
+                    <input type="text" class="inputPerfil" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required="" id="nombre" name="nombre" value="nombre1">
+                    <br>
+                    <b>Apellidos:</b>
+                    <input type="text" class="inputPerfil" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required="" id="apellidos" name="apellidos" value="Guarnizo Ballestero">
+                    <br>
+                    <b>Dirección:</b>
+                    <input type="text" class="inputPerfil" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required="" id="direccion" name="direccion" value="Calle Ejemplo, Nº 123">
+                    <br>
+                    <b>DNI:</b>
+                    <input type="text" class="inputPerfil" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required="" id="dni" name="dni" value="12345678A">
+                    <br>
+
+                    <button class="btn-perfil"><a th:href="@{/perfil}">Enviar</a></button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <p class="text-center"><a th:href="@{/inicio}"><button class="btn-perfilll">VOLVER</button></a></p>
+
+    </div>
+
+</div>
+
+<footer th:replace="index :: footer"></footer>
+
+
+<script src="js/script.js"></script>
+
+</body>
+</html>
