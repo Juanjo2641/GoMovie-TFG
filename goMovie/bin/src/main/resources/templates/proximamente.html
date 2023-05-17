@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>GoMovie!</title>
+    <link rel="icon" href="../assets/img/favicon.ico" th:href="@{/assets/img/favicon.ico}"/>
+    <link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet" />
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+
+</head>
+<body>
+    <nav>
+        <div class="nav-bar">
+            <i class='bx bx-menu sidebarOpen' ></i>
+            <span class="logo navLogo"><a title="inicio" th:href="@{/inicio}" id="texttttt"><img src="../assets/imagenes/logo.png" th:src = "@{/assets/img/logo.png}" alt="" id="fotou"></a></span>
+
+            <div class="menu">
+                <div class="logo-toggle">
+                    <span class="logo"><a href="#">CodingLab</a></span>
+                    <i class='bx bx-x siderbarClose'></i>
+                </div>
+
+                <ul class="nav-links">
+                    <li><a th:href="@{/inicio}">Películas</a></li>
+                    <li><a th:href="@{/ofertas}">Ofertas</a></li>
+                    <li><a th:href="@{/lista}">Tu lista</a></li>
+                    <li><a th:href="@{/proximamente}">Próximamente</a></li>
+                </ul>
+            </div>
+
+            <div class="darkLight-searchBox">
+
+                <div class="searchBox">
+
+                    <div class="searchToggle">
+                        <i class='bx bx-x cancel bx-sm icons' style= "color:white" ></i>
+                        <i class='bx bx-search search bx-sm icons' style= "color:white"></i>
+                    </div>
+
+                    <div class="search-field">
+                        <input type="text" placeholder="Search...">
+                        <i class='bx bx-search icons'></i>
+                    </div>
+
+                </div>
+
+                <div class="searchBox">
+
+                    <a th:href="@{/perfil}" class="skr"><i class="bx bxs-user bx-sm icons" ></i></a>
+
+                </div>
+
+                <div class="searchBox">
+
+                    <a th:href="@{/}"><i class='bx bx-log-out bx-sm icons'></i></a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+    <div class="pelicula-principal">
+        <div class="contenedor">
+            <h3 class="titulo">Guardianes de la galaxia 3</h3>
+            <p class="descripcion">
+                Narra las aventuras de un grupo de exploradores que hacen uso de un agujero de gusano recientemente descubierto para superar las limitaciones de los viajes espaciales tripulados y vencer las inmensas distancias que tiene un viaje interestelar.
+            </p>
+            <a href="https://www.youtube.com/watch?v=9SfnkovRye8"><button role="button" class="boton">▶ Ver tráiler</button></a>
+            <button role="button" class="botonn">Más información</button>
+        </div>
+    </div>
+
+    <section class="movie">
+        <div class="overlay"></div>
+        <img src="https://via.placeholder.com/400x600" alt="Movie Poster">
+        <div class="movie-info">
+            <h2>Titulo de Película</h2>
+            <p>Descripcion de la película</p>
+            <button>Ver ahora</button>
+        </div>
+    </section>
+
+    <section class="show">
+        <div class="overlay"></div>
+        <img src="https://via.placeholder.com/400x600" alt="Show Poster">
+        <div class="show-info">
+            <h2>Titulo de Serie</h2>
+            <p>Descripcion de la serie</p>
+            <button>Ver ahora</button>
+        </div>
+    </section>
+
+	<footer th:replace="index :: footer"></footer>
+	
+	<script src="js/script.js"></script>
+
+</body>
+</html>

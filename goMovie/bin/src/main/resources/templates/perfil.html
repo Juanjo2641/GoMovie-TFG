@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GoMovie!</title>
+    <link rel="icon" href="../assets/img/favicon.ico" th:href="@{/assets/img/favicon.ico}"/>
+    <link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet" />
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+<body>
+
+<div class="container p-4">
+
+    <a th:href="@{/inicio}"><img src="../static/assets/img/logo.png" th:src="@{/assets/img/logo.png}" id="fotoPerfil" /></a>
+
+    <!-- <div sec:authorize="isAuthenticated()">
+        <b>Usuario:</b> <span sec:authentication="name">Username</span>&nbsp;<i><span sec:authentication="principal.authorities">Roles</span></i>
+    </div> -->
+
+    <div class="cositas bg-light pt-4 border border-4">
+
+        <div class="profile-menu bg-light">
+
+            <div class="profile-info">
+
+                <div class="rowPerfil">
+                    <h2 class="titulosh2">Tus datos:</h2>
+                    <br>
+                    <b>Correo electrónico:</b>
+                    <p>correo_ejemplo@ejemplo.com</p>
+                    <br>
+                    <b>Nombre:</b>
+                    <p>Nombre Ejemplo</p>
+                    <br>
+                    <b>Apellidos:</b>
+                    <p>Apellido Ejemplo</p>
+                    <br>
+                    <b>Dirección:</b>
+                    <p>Calle Ejemplo, Nº 123</p>
+                    <br>
+                    <b>DNI:</b>
+                    <p>12345678A</p>
+                    <br>
+
+                    <button class="btn-perfil"><a th:href="@{/modificarPerfil}">Modificar datos</a></button>
+
+                </div>
+
+            </div>
+
+
+            <div class="profile-orders">
+                <div class="rowPerfil">
+                    <h2 class="titulosh2">Tus compras:</h2>
+
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>Nº Orden</th>
+                            <th>Pedido</th>
+                            <th>Entrega</th>
+                            <th>Dirección</th>
+                            <th>Cantidad</th>
+                            <th>Total</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>12345</td>
+                            <td>10/05/2023</td>
+                            <td>15/05/2023</td>
+                            <td>Calle Ejemplo, Nº 123</td>
+                            <td>2</td>
+                            <td>29.98€</td>
+                            <td><button class="btn-perfil">Ver Detalle</button></td>
+                        </tr>
+                        <tr>
+                            <td>67890</td>
+                            <td>05/05/2023</td>
+                            <td>10/05/2023</td>
+                            <td>Calle Ejemplo, Nº 123</td>
+                            <td>1</td>
+                            <td>14.99€</td>
+                            <td><button class="btn-perfil">Ver Detalle</button></td>
+                        </tr>
+
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+
+        <p class="text-center"><a th:href="@{/inicio}"><button class="btn-perfilll">VOLVER</button></a></p>
+
+    </div>
+
+</div>
+
+    <footer th:replace="index :: footer"></footer>
+
+
+    <script src="js/script.js"></script>
+
+</body>
+</html>
+
+
+
