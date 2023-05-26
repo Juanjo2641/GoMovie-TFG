@@ -12,8 +12,11 @@
     <nav>
         <div class="nav-bar">
             <i class='bx bx-menu sidebarOpen' ></i>
-            <span class="logo navLogo"><a title="inicio" th:href="@{/inicio}" id="texttttt"><img src="../assets/img/logo.png" th:src = "@{/assets/img/logo.png}" alt="" id="fotou"></a></span>
-
+            <div class="menu">
+                <span class="logo navLogo"> <a title="inicio" th:href="@{/inicio}" id="texttttt">
+                	<h1 class="gomovie" id="tituloGo">🎬GoMovie!</h1>
+                </a></span>
+            </div>
             <div class="darkLight-searchBox">
 
                 <div class="searchBox">
@@ -35,7 +38,7 @@
 		
 		<div class="header-text">
 			<h1>¡Disfruta de tus películas<br>favoritas con GoMovie!</h1>
-            <button class="register-btn"><a th:href="@{/inicio}">Regístrate</a></button>
+            <button class="register-btn"><a th:href="@{/signup}">Regístrate</a></button>
         </div>
 
     </header>
@@ -45,7 +48,11 @@
 
     <footer th:fragment="footer">
         <div class="container-footer">
+
             <div class="footer-extendables">
+            <div class="extendable-logo">
+            <img class="logo-gm" src="../assets/img/logo.png" th:hrf="@{/assets/img/logo.png}">
+            </div>
                 <div class="extendable">
                     <h3>Quiénes Somos</h3>
                     <ul>
@@ -74,7 +81,7 @@
         </div>
     </footer>
 
-  <script src="js/script.js"></script>
+  <script src="../js/script.js"></script>
   
 </body>
 </html>

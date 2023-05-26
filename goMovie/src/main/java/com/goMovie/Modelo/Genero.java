@@ -26,6 +26,7 @@ public class Genero {
 		this.nombre = nombre;
 	}
 
+	
 	public int getId_genero() {
 		return id_genero;
 	}

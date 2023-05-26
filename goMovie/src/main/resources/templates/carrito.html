@@ -1,10 +1,81 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>GoMovie!</title>
+    <link rel="icon" href="../assets/img/favicon.ico" th:href="@{/assets/img/favicon.ico}"/>
+    <link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet" />
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
 </head>
-<body>
+
+<body id="page-top">
+
+    <nav th:replace="inicio :: nav"></nav>
+
+    <div class="carrito">
+
+
+        <div>
+            <h2 class="miCesta">Mi Cesta</h2>
+            <h3 class="miCesta">TOTAL: <span th:text="${orden.total}+€"></span></h3>
+        </div>
+
+        <div class="caja-roja2">
+            <div class="row">
+                <div th:each="orden:${carrito}">
+                    <div class="card" style="width: 50vw">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <img th:src="${orden.foto}" class="img-fluid rounded-start" style="max-height: 150px; max-width: 230px">
+                            </div>
+                            <div class="col-md-5">
+                                <div class="card-body">
+                                    <h5 class="card-title" th:text="${orden.nombre}"></h5>
+                                    <p class="card-text text-muted" th:text="${orden.precio}+€"></p>
+                                    <span th:if="${orden.pelicula.stock >= 10}"></span>
+
+                                    <span th:if="${orden.pelicula.stock == 1}"><p th:text="'Queda '+${orden.pelicula.stock}+' Artículo'"></p></span>
+                                    <span th:if="${orden.pelicula.stock <= 0}">No quedan artículos</span>
+                                </div>
+                            </div>
+                            <div>
+
+                                <a th:href="@{/delete/cart/{id} (id=${orden.pelicula.id_pelicula}) }" class="borrar">Borrar</a>
+
+                                <a th:href="@{/restar/cart/{id} (id=${orden.pelicula.id_pelicula}) }">
+                                    <button class="botones">-</button>
+                                </a>
+
+                                <input class="inputCarro" style="width: 30px; height: 38px" th:value="${orden.cantidad}" readonly>
+
+                                <a th:href="${orden.pelicula.stock <= 0} ? '#' : @{/sumar/cart/{id}(id=${orden.pelicula.id_pelicula})}">
+                                    <button class="botones" th:classappend="${orden.pelicula.stock <= 0} ? 'disabled btn-danger' : ' '">
+                                        <span th:if="${orden.pelicula.stock > 0}">+</span><span th:if="${orden.pelicula.stock <= 0}">X</span>
+                                    </button>
+                                </a>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+                <a th:href="@{orden}" th:classappend ="${ orden.cantidad == 0 } ? 'disabled'"><button class="btn-compra">Comprar</button></a>
+
+            </div>
+
+        </div>
+        <a class="keep" type="button" th:href="@{/inicio}"> Seguir comprando </a><br><br><br>
+
+
+    </div>
+
+    <footer th:replace="index :: footer"></footer>
+
+    <script src="../js/script.js"></script>
+    <script src="../js/lightbox.js"></script>
 
 </body>
 </html>

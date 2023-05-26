@@ -9,72 +9,37 @@
     <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
-<body>
-    <nav>
-        <div class="nav-bar">
-            <i class='bx bx-menu sidebarOpen' ></i>
-            <span class="logo navLogo"><a title="inicio" th:href="@{/inicio}" id="texttttt"><img src="../assets/img/logo.png" th:src = "@{/assets/img/logo.png}" alt="" id="fotou"></a></span>
-
-            <div class="menu">
-                <div class="logo-toggle">
-                    <span class="logo"><a href="#">CodingLab</a></span>
-                    <i class='bx bx-x siderbarClose'></i>
-                </div>
-
-                <ul class="nav-links">
-                    <li><a th:href="@{/inicio}">Películas</a></li>
-                    <li><a th:href="@{/ofertas}">Ofertas</a></li>
-                    <li><a th:href="@{/lista}">Tu lista</a></li>
-                    <li><a th:href="@{/proximamente}">Próximamente</a></li>
-                </ul>
-            </div>
-
-            <div class="darkLight-searchBox">
-            	<div class="searchBox">
-                    <div class="searchToggle">
-                        <i class='bx bx-x cancel bx-sm icons' style= "color:white" ></i>
-                        <i class='bx bx-search search bx-sm icons' style= "color:white"></i>
-                    </div>
-
-                    <div class="search-field">
-                        <input type="text" placeholder="Search...">
-                        <i class='bx bx-search icons'></i>
-                    </div>
-                </div>
-            
-                <div class="searchBox">
-                    <a th:href="@{/perfil}" class="skr"><i class="bx bxs-user bx-sm icons" ></i></a>
-                </div>
-
-                <div class="searchBox">
-                    <a th:href="@{/}"><i class='bx bx-log-out bx-sm icons'></i></a>
-                </div>          
-            </div>
-        </div>
-    </nav>
+    <nav th:replace="inicio :: nav"></nav>
 
     <div class="container-detalles">
-        <div  class="">
-            <img class="img-detalles" src="https://via.placeholder.com/150x225.png?text=Serie+1" alt="Serie 1">
-            <div class="detalle">
-                <h1 >Ready Player One</h1>
-                <h3>9.99€</h3>
-                <h5>Ciencia ficción. Aventuras. Acción</h5>
-                <h5>2 h 30 mins.</h5>
-                <p>Año 2045. Wade Watts es un adolescente al que le gusta evadirse del cada vez más sombrío mundo real a
-                través de una popular utopía virtual a escala global llamada "Oasis". Un día, su excéntrico y multimillonario creador muere,
-                pero antes ofrece su fortuna y el destino de su empresa al ganador de una elaborada búsqueda del tesoro a través de los rincones
-                más inhóspitos de su creación. Será el punto de partida para que Wade se enfrente a jugadores, poderosos enemigos corporativos y
-                otros competidores despiadados, dispuestos a hacer lo que sea, tanto dentro de "Oasis" como del mundo real, para hacerse con el premio.</p>
-                <button class="register-btn"><i class='bx bxs-cart-alt'></i><a th:href="@{/inicio}">Comprar</a></button>
-            </div>
-        </div>
+        <img class="img-detalles" th:src="${pelicula.foto}" th:alt="${pelicula.nombre}">
+		<form th:action="@{/añadirCarrito}" method="POST">
+	        <div class="detalle">
+	            <input type="hidden" th:value="${pelicula.id_pelicula}" name="id_pelicula" />
+	            <h1 th:text="${pelicula.nombre}"></h1>
+	            <h3 th:text="${pelicula.precio} + '€'"></h3>
+	            <h5 th:text="${pelicula.genero.nombre}"></h5>
+	            <h5 th:text="${pelicula.duracion}"></h5>
+	
+	            <div class="cuadrante">
+	                ⭐&nbsp;<span th:text="${pelicula.puntuacion}"> </span>&nbsp;/ 5
+	            </div>
+	
+	            <div class="caja-roja"> <p th:text="${pelicula.descripcion}"></p> </div>
+				
+				<button class="comprar-btn" data-bs-dismiss="modal" type="submit" th:classappend="${pelicula.stock <= 0} ? 'disabled btn-danger' : ' '">
+					<span th:if="${pelicula.stock > 0}">🛒Añadir al carrito</span>
+					<span th:if="${pelicula.stock <= 0}">No disponible</span>
+				</button>
+	        </div>
+		</form>
     </div>
 
+    <a th:href="@{/inicio}"><button class="btn-detalles">Volver</button></a>
+	
     <footer th:replace="index :: footer"></footer>
 
-
-    <script src="js/script.js"></script>
+    <script src="../js/script.js"></script>
   
 </body>
 </html>

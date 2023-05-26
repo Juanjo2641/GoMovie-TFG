@@ -1,10 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GoMovie!</title>
+    <link rel="icon" href="../assets/img/favicon.ico" th:href="@{/assets/img/favicon.ico}"/>
+    <link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet" />
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
 </head>
-<body>
 
+<body>
+    <nav th:replace="inicio :: nav"></nav>
+
+    <div class="textos-buscador">
+        <div id="separador">
+            <hr class="red-separator">
+        </div>
+    </div>
+
+    <main id="mainInicio">
+
+        <div class="row" th:if="${peliculas.size() > 0}">
+            <div class="producto" th:each="pelicula: ${peliculas}">
+                <a th:href="@{/detalles/} + ${pelicula.id_pelicula}">
+                	<img th:src="${pelicula.foto}" alt="Movie Poster">
+                	<h2 th:text="${pelicula.nombre}">Movie Title</h2>
+                </a>
+                
+            </div>
+        </div>
+		
+		<div th:if="${peliculas.size() < 1}">
+			<h1 class="centrados">No se encontró ninguna película.</h1>
+		</div>
+
+    </main>
+
+    <footer th:replace="index :: footer"></footer>
+    
+    <script src="../js/script.js"></script>
 </body>
 </html>

@@ -1,10 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GoMovie!</title>
+    <link rel="icon" href="../assets/img/favicon.ico" th:href="@{/assets/img/favicon.ico}"/>
+    <link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet" />
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+    <link href="path/to/lightbox.css" rel="stylesheet" />
 </head>
 <body>
+    <nav th:replace="inicio :: nav"></nav>
 
+    <div class="setentapx">
+        <main id="mainInicio">
+
+            <div class="row" >
+                <div class="producto" th:each="pelicula: ${peliculas}">
+                    <a th:href="@{/detalles/} + ${pelicula.id_pelicula}">
+                        <img th:src="${pelicula.foto}" alt="Movie Poster">
+                        <h2 th:text="${pelicula.nombre}">Movie Title</h2>
+                    </a>
+
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <a th:href="@{/inicio}"><button class="btn-detalles">Volver</button></a>
+
+    <footer th:replace="index :: footer"></footer>
+
+    <script src="../js/script.js"></script>
 </body>
 </html>

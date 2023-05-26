@@ -6,61 +6,10 @@
     <link rel="icon" href="../assets/img/favicon.ico" th:href="@{/assets/img/favicon.ico}"/>
     <link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet" />
     <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
-
 </head>
-<body>
-    <nav>
-        <div class="nav-bar">
-            <i class='bx bx-menu sidebarOpen' ></i>
-            <span class="logo navLogo"><a title="inicio" th:href="@{/inicio}" id="texttttt"><img src="../assets/imagenes/logo.png" th:src = "@{/assets/img/logo.png}" alt="" id="fotou"></a></span>
+<body class="body">
 
-            <div class="menu">
-                <div class="logo-toggle">
-                    <span class="logo"><a href="#">CodingLab</a></span>
-                    <i class='bx bx-x siderbarClose'></i>
-                </div>
-
-                <ul class="nav-links">
-                    <li><a th:href="@{/inicio}">Películas</a></li>
-                    <li><a th:href="@{/ofertas}">Ofertas</a></li>
-                    <li><a th:href="@{/lista}">Tu lista</a></li>
-                    <li><a th:href="@{/proximamente}">Próximamente</a></li>
-                </ul>
-            </div>
-
-            <div class="darkLight-searchBox">
-
-                <div class="searchBox">
-
-                    <div class="searchToggle">
-                        <i class='bx bx-x cancel bx-sm icons' style= "color:white" ></i>
-                        <i class='bx bx-search search bx-sm icons' style= "color:white"></i>
-                    </div>
-
-                    <div class="search-field">
-                        <input type="text" placeholder="Search...">
-                        <i class='bx bx-search icons'></i>
-                    </div>
-
-                </div>
-
-                <div class="searchBox">
-
-                    <a th:href="@{/perfil}" class="skr"><i class="bx bxs-user bx-sm icons" ></i></a>
-
-                </div>
-
-                <div class="searchBox">
-
-                    <a th:href="@{/}"><i class='bx bx-log-out bx-sm icons'></i></a>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </nav>
+    <nav th:replace="inicio :: nav"></nav>
 
     <div class="pelicula-principal">
         <div class="contenedor">
@@ -68,34 +17,53 @@
             <p class="descripcion">
                 Narra las aventuras de un grupo de exploradores que hacen uso de un agujero de gusano recientemente descubierto para superar las limitaciones de los viajes espaciales tripulados y vencer las inmensas distancias que tiene un viaje interestelar.
             </p>
-            <a href="https://www.youtube.com/watch?v=9SfnkovRye8"><button role="button" class="boton">▶ Ver tráiler</button></a>
-            <button role="button" class="botonn">Más información</button>
+         <button id="playme" onclick="revealVideo('video','youtube')">Play Video</button>
+			<div id="video" class="lightbox" onclick="hideVideo('video','youtube')">
+	  			<div class="lightbox-container">  
+	    			<div class="lightbox-content">
+		      			<div class="video-container">
+					        <iframe id="youtube" width="960" height="540" src="https://www.youtube.com/embed/9SfnkovRye8?start=0" frameborder="0" ></iframe>
+					    </div>
+					</div>
+	  			</div>
+			</div>
+            <a href="https://www.fotogramas.es/noticias-cine/a32890649/guardianes-de-la-galaxia-3-reparto-estreno-sinopsis/"><button role="button" class="botonn">Más información</button></a>
         </div>
     </div>
 
-    <section class="movie">
+    <section class="movie movieimg1">
         <div class="overlay"></div>
-        <img src="https://via.placeholder.com/400x600" alt="Movie Poster">
         <div class="movie-info">
-            <h2>Titulo de Película</h2>
-            <p>Descripcion de la película</p>
-            <button>Ver ahora</button>
+            <h2 class="title-prox">The Flash</h2>
+            <p>16 de Junio 2023</p>
+            <a href="https://depor.com/depor-play/pantalla/the-flash-cuando-se-estrena-la-pelicula-y-cual-es-la-sinopsis-michael-keaton-the-flash-film-dc-comics-batman-michael-keaton-ezra-miller-dc-studios-warner-bros-pictures-ben-affleck-barry-allen-flash-argumento-trailer-cines-noticia/?ref=depr"><button>Ver más</button></a>
         </div>
     </section>
-
-    <section class="show">
+    
+    <section class="movie movieimg2">
         <div class="overlay"></div>
-        <img src="https://via.placeholder.com/400x600" alt="Show Poster">
-        <div class="show-info">
-            <h2>Titulo de Serie</h2>
-            <p>Descripcion de la serie</p>
-            <button>Ver ahora</button>
+        <div class="movie-info">
+            <h2 class="title-prox">Spiderman: across the spider-verse</h2>
+            <p>2 de Junio 2023</p>
+            <a href="https://depor.com/depor-play/pantalla/spider-man-across-the-spider-verse-que-dia-se-estrena-la-pelicula-y-cual-es-la-sinopsis-peliculas-trailer-fecha-de-estreno-spider-man-across-miles-morales-gwen-stacy-noticia/"  ><button>Ver más</button></a>
         </div>
     </section>
+	
+    <section class="movie movieimg3">	
+        <div class="overlay"></div>
+        <div class="movie-info">
+            <h2 class="title-prox">Transformers: El despertar de las bestias</h2>
+            <p>9 de Junio 2023</p>
+            <a href="https://depor.com/depor-play/pantalla/spider-man-across-the-spider-verse-que-dia-se-estrena-la-pelicula-y-cual-es-la-sinopsis-peliculas-trailer-fecha-de-estreno-spider-man-across-miles-morales-gwen-stacy-noticia/" ><button>Ver más</button></a>
+        </div>
+    </section>
+    
+
 
 	<footer th:replace="index :: footer"></footer>
-	
-	<script src="js/script.js"></script>
+
+	<script src="../js/script.js"></script>
+	<script src="../js/lightbox.js"></script>
 
 </body>
 </html>

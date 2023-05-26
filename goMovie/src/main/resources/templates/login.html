@@ -10,7 +10,7 @@
 	<title>GoMovie!</title>	
 	<link rel="icon" href="../assets/img/favicon.ico" th:href="@{/assets/img/favicon.ico}"/>
 	
-	<script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+	
 	<link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet" />
 </head>
 
@@ -22,8 +22,7 @@
     			
     			<a th:href="@{/}"><img class="logo-login" src="../assets/img/logo.png"  th:src="@{/assets/img/logo.png}" /></a>
     			
-    			
-    			
+
       			<form class="form-login" th:action="@{/login}" method="post">
 					<!--Mensajes de error-->
         			<div th:if="${param.error}">
@@ -45,7 +44,7 @@
        			 	</div>
 
 			        <!-- Submit button-->
-			        <button type="button" class="btn" >ENTRAR</button>
+			        <button type="submit" class="btn-login" >ENTRAR</button>
 
 			        <!-- Register buttons -->
 			        <div class="register">
@@ -65,7 +64,7 @@
     
 	<footer th:replace="index :: footer"></footer>
 
-    <script src="js/scripts.js"></script>
+    <script src="../js/scripts.js"></script>
 
   </body>
 </html>

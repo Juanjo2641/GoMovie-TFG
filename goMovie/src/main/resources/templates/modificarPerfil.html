@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,35 +21,34 @@
         <div class="profile-menu bg-light">
 
             <div class="profile-info">
-
+	
                 <div class="rowPerfil">
                     <h2 class="titulosh2">Tus datos:</h2>
                     <br>
-                    <b>Correo electrónico:</b>
-                    <p>correo_ejemplo@ejemplo.com</p>
-                    <br>
-                    <b>Nombre:</b>
-                    <input type="text" class="inputPerfil" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required="" id="nombre" name="nombre" value="nombre1">
-                    <br>
-                    <b>Apellidos:</b>
-                    <input type="text" class="inputPerfil" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required="" id="apellidos" name="apellidos" value="Guarnizo Ballestero">
-                    <br>
-                    <b>Dirección:</b>
-                    <input type="text" class="inputPerfil" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required="" id="direccion" name="direccion" value="Calle Ejemplo, Nº 123">
-                    <br>
-                    <b>DNI:</b>
-                    <input type="text" class="inputPerfil" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required="" id="dni" name="dni" value="12345678A">
-                    <br>
+					<form th:action="@{/save}" th:object="${usuario}" method="post">
+						<input type="hidden" th:field="*{id_usuario}">
+	                    <b>Nombre:</b>
+	                    <input th:field="*{nombre}" type="text" class="inputPerfil" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" id="nombre" name="nombre" required>
+	                    <br>
+	                    <b>Apellidos:</b>
+	                    <input th:field="*{apellido}" type="text" class="inputPerfil" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" id="apellidos" name="apellidos" required>
+	                    <br>
+	                    <b>Dirección:</b>
+	                    <input th:field="*{direccion}" type="text" class="inputPerfil" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" id="direccion" name="direccion" required>
+	                    <br>
+	                    <b>DNI:</b>
+	                    <input th:field="*{dni}" type="text" class="inputPerfil" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" id="dni" name="dni" required>
+	                    <br>
 
-                    <button class="btn-perfil"><a th:href="@{/perfil}">Enviar</a></button>
-
+                    	<button class="btn-perfil"><a th:href="@{/perfil}">Enviar</a></button>
+					</form>
                 </div>
 
             </div>
 
         </div>
 
-        <p class="text-center"><a th:href="@{/inicio}"><button class="btn-perfilll">VOLVER</button></a></p>
+        <p class="text-center"><a th:href="@{/perfil}"><button class="btn-perfilll">VOLVER</button></a></p>
 
     </div>
 
@@ -58,7 +57,7 @@
 <footer th:replace="index :: footer"></footer>
 
 
-<script src="js/script.js"></script>
+<script src="../js/script.js"></script>
 
 </body>
 </html>

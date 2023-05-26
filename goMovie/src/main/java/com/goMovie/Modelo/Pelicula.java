@@ -1,14 +1,19 @@
 package com.goMovie.Modelo;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import java.util.HashSet;
+import java.util.Set;
+
 
 
 @Entity
@@ -22,23 +27,30 @@ public class Pelicula {
 	private String nombre;
 	private String descripcion;
 	private String duracion;
-	private float precio;
+	private double precio;
 	private int stock;
 	private int rebaja;
 	private int descatalogado;
-	
+
+	private int puntuacion;
 
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
 	@JoinColumn(name = "id_genero")
 	private Genero genero;
+	
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "peliculas_tags",
+            joinColumns = @JoinColumn(name = "id_pelicula"),
+            inverseJoinColumns = @JoinColumn(name = "id_tag"))
+    private Set<Tag> tags = new HashSet<>();
 	
 	
 	public Pelicula() {
 		super();
 	}
 
-	public Pelicula(int id_pelicula, String foto, String nombre, String descripción, String duracion, float precio,
-			int stock, int rebaja, int descatalogado, Genero genero) {
+	public Pelicula(int id_pelicula, String foto, String nombre, String descripción, String duracion, double precio,
+			int stock, int rebaja, int descatalogado, Genero genero, int puntuacion) {
 		super();
 		this.id_pelicula = id_pelicula;
 		this.foto = foto;
@@ -50,6 +62,7 @@ public class Pelicula {
 		this.rebaja = rebaja;
 		this.descatalogado = descatalogado;
 		this.genero = genero;
+		this.puntuacion = puntuacion;
 	}
 	
 	
@@ -93,11 +106,11 @@ public class Pelicula {
 		this.duracion = duracion;
 	}
 
-	public float getPrecio() {
+	public double getPrecio() {
 		return precio;
 	}
 
-	public void setPrecio(float precio) {
+	public void setPrecio(double precio) {
 		this.precio = precio;
 	}
 
@@ -132,6 +145,26 @@ public class Pelicula {
 
 	public void setGenero(Genero genero) {
 		this.genero = genero;
+	}
+
+	public int getPuntuacion(){
+
+		return puntuacion;
+
+	}
+
+	public void setPuntuacion(int puntuacion){
+
+		this.puntuacion = puntuacion;
+
+	}
+	
+	public Set<Tag> getTags() {
+		return tags;
+	}
+
+	public void setTags(Set<Tag> tags) {
+		this.tags = tags;
 	}
 
 	

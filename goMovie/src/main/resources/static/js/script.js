@@ -25,39 +25,7 @@
         }
     });
 
-    //ANIMACIONES CARDS
-    const movieCards = document.querySelectorAll('.movie');
-    const showCards = document.querySelectorAll('.show');
 
-    function showCardInfo(card) {
-        const info = card.querySelector('.overlay');
-        info.classList.add('fade-in');
-    }
-
-    function hideCardInfo(card) {
-        const info = card.querySelector('.overlay');
-        info.classList.remove('fade-in');
-    }
-
-    movieCards.forEach(card => {
-        card.addEventListener('mouseenter', () => {
-        showCardInfo(card);
-    });
-
-    card.addEventListener('mouseleave', () => {
-        hideCardInfo(card);
-    });
-    });
-
-    showCards.forEach(card => {
-        card.addEventListener('mouseenter', () => {
-        showCardInfo(card);
-    });
-
-    card.addEventListener('mouseleave', () => {
-        hideCardInfo(card);
-    });
-    });
 
 
     //SLIDESHOW
@@ -106,6 +74,16 @@
 
     autoSlide();
 
-
-
-
+	// ANCLAJE
+	window.onload = function() {
+		var currentPage = window.location.pathname;
+		var pagesToScroll = ["/fantasia", "/drama", "/romantico", "/comedia", "/infantil", "/accion", "/todas"];
+	
+		if (pagesToScroll.includes(currentPage)) {
+			var element = document.getElementById("tituloGo");
+			
+			if (element) {
+				element.scrollIntoView({});
+			}
+		}
+	};
