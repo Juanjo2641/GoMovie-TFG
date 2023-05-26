@@ -1,0 +1,14 @@
+-Tener el plugin spring Tools 4 (aka Spring Tool Suite 4) 4.18.1.RELEASE en eclipse para iniciar spring boot
+
+-El servidor esta en local y he usado mysql workbench para la base de datos.
+
+-Abriendo el proyecto EN ECLIPSE, en la segunda carpeta src/main/resources está el properties, ahí deberás modificar los puntos 2 y 3
+y poner tu usuario y contraseña de mysql workbench si el server.port está en otro que no sea 8080, o borras esa linea o lo pones en 8080, 
+a veces uso otro puerto por tener otro proyecto abierto en el 8080 (Liferay)
+
+Dentro de la carpeta del proyecto de github hay dos carpetas, en la de goMovie_BDD está la base de datos.
+
+Hay 3 archivos, solo es necesario utilizar goMovieBBDDcompleta.sql, e introducir toda la informacion en una bbdd llamada gomovie.
+
+Creo que con esto, ya debería funcionar la aplicación, si tienes algún problema que no haya resuelto aquí, hazmelo saber y ya 
+te digo.
