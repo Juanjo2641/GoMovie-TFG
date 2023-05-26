@@ -19,33 +19,36 @@
 	<div class="container-signup-int">
 	
 	<a th:href="@{/}"><img class="logo-signup" src="../assets/img/logo.png"  th:src="@{/assets/img/logo.png}" /></a>
-		<div th:if=${param.exito}>
+		
+		<form class="form-signup" th:action="@{/signup}" method="post" th:object="${usuario}">
+
+			<div th:if=${param.exito}>
 			<div class="Usuario-nuevo">Se ha registrado exitosamente a
 				la aplicación.</div>
 		</div>
 		<div th:if=${param.fallo}>
 			<div class="Usuario-registrado">El usuario ya está registrado.</div>
 		</div>
-		<form class="form-signup" th:action="@{/signup}" method="post" th:object="${usuario}">
+		
 
-			<div class="nombre">
+			<div class="nombre registro">
 				<input type="text" class="form-control-signup"
 					name="nombre" th:field="*{nombre}" placeholder="Nombre" required />
 			</div>
 
-			<div class="apellido">
+			<div class="apellido registro">
 				<input type="text" class="form-control-signup"
 					name="apellido" th:field="*{apellido}" placeholder="Apellido"
 					required />
 			</div>
 
-			<div class="email">
+			<div class="email registro">
 				<input type="email" class="form-control-signup"
 					name="email" th:field="*{email}" placeholder="Correo electrónico"
 					required />
 			</div>
 
-			<div class="pass">
+			<div class="pass registro">
 				<input type="password" class="form-control-signup"
 					name="password" th:field="*{password}" placeholder="Contraseña"
 					required />
@@ -66,12 +69,7 @@
                     <input type="password" id="form2Example3" class="form-control" placeholder="Repita la contraseña" />
                 </div>-->
 
-			<div class="Terminos">
-				<input class="form-check-input me-2" type="checkbox" value=""
-					id="registerCheck" checked aria-describedby="registerCheckHelpText" />
-				<label class="form-check-label" for="registerCheck"> He
-					leído y acepto los términos </label>
-			</div>
+			
 
 
 			<div class="form-group">
@@ -84,21 +82,7 @@
 				<p>
 					¿Eres miembro? <a th:href="@{/login}">Inicia sesión</a>
 				</p>
-				<button type="button" class="btn btn-link btn-floating mx-1">
-					<i class="fab fa-facebook-f"></i>
-				</button>
-
-				<button type="button" class="btn btn-link btn-floating mx-1">
-					<i class="fab fa-google"></i>
-				</button>
-
-				<button type="button" class="btn btn-link btn-floating mx-1">
-					<i class="fab fa-twitter"></i>
-				</button>
-
-				<button type="button" class="btn btn-link btn-floating mx-1 pb-3">
-					<i class="fab fa-github"></i>
-				</button>
+				
 			</div>
 		
 		</form>
