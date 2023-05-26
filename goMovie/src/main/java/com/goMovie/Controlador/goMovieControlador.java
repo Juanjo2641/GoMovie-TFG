@@ -777,7 +777,7 @@ public class goMovieControlador {
 			detalles.clear();	
 		
 			
-			return "redirect:/";
+			return "redirect:/inicio";
 		}		
 	}
 		
