@@ -23,4 +23,5 @@ public interface PeliculaServicio {
     Pelicula get(int id);
 
 	Pelicula save(Pelicula pelicula);
+	List<Pelicula> findByIDs(List<Integer> ids);
 }

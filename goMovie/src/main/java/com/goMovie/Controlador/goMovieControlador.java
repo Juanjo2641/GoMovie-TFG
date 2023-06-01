@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
-import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -19,11 +18,14 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.goMovie.Modelo.DetalleOrden;
+import com.goMovie.Modelo.Genero;
 import com.goMovie.Modelo.Orden;
 import com.goMovie.Modelo.Pelicula;
 import com.goMovie.Modelo.Tag;
 import com.goMovie.Modelo.Usuario;
+import com.goMovie.Repositorio.UsuarioRepositorio;
 import com.goMovie.Servicio.DetalleOrdenServicio;
+import com.goMovie.Servicio.GeneroServicio;
 import com.goMovie.Servicio.OrdenServicio;
 import com.goMovie.Servicio.PeliculaServicio;
 import com.goMovie.Servicio.TagServicio;
@@ -34,7 +36,6 @@ import com.goMovie.Servicio.UsuarioServicio;
 @RequestMapping("/")
 public class goMovieControlador {
 	
-	private static final Logger log = Logger.getLogger(goMovieControlador.class);
 	
 
 	@Autowired
@@ -44,7 +45,11 @@ public class goMovieControlador {
 	private TagServicio tagServicio;
 	
 	@Autowired
+	private GeneroServicio generoServicio;
+	
+	@Autowired
 	private UsuarioServicio usuarioServicio;
+	
 	
 	@Autowired
 	private OrdenServicio ordenServicio;
@@ -52,8 +57,12 @@ public class goMovieControlador {
 	@Autowired
 	private DetalleOrdenServicio detalleOrdenServicio;
 	
+	Random random = new Random();
 	List<DetalleOrden> detalles = new ArrayList<DetalleOrden>();
+	List<Integer> peliculasDeseadas = new ArrayList<>();
 	Orden orden = new Orden();
+	
+	
 
 	
 			/* PAGINAS PRINCIPALES */
@@ -206,27 +215,61 @@ public class goMovieControlador {
 	}
 			/* OFERTAS */
 
+			
+			/* TU LISTA */	
+		@GetMapping("/lista")
+		public String mostrarDeseadas(Model model) {
+			List<Pelicula> listaDeseadas = peliculaServicio.findByIDs(peliculasDeseadas);
+			model.addAttribute("peliculasDeseadas", listaDeseadas);
+			
+			List<Pelicula> peliculas = peliculaServicio.findAll();
+			int totalPeliculas = peliculas.size();
+			Pelicula peliculaDestacada = peliculaServicio.findByID(random.nextInt(totalPeliculas));
+			model.addAttribute("peliculaDestacada", peliculaDestacada);
+			
+			return "lista";
+		}
+			
 
+		
+		@PostMapping("/deseada")
+		public String guardarDeseadas(@RequestParam("id_pelicula") int id_pelicula) {
+		    peliculasDeseadas.add(id_pelicula);
+		    return "redirect:inicio";
+		}
+		
+		@GetMapping("/eliminarDeseadas")
+		public String eliminarDeseadas(@RequestParam("id_pelicula") int id_pelicula) {
+			peliculasDeseadas.remove(Integer.valueOf(id_pelicula));
+			return"redirect:lista";
+			
+		}
+			/* TU LISTA */
 
+		
+		
 			/* DETALLES */
+		
 	@GetMapping("/detalles/{id_pelicula}")
 	public String detalles(@PathVariable("id_pelicula") int id_pelicula, Model model) {
 		Pelicula pelicula = peliculaServicio.findByID(id_pelicula);
-		model.addAttribute("pelicula", pelicula);
+		
+	    if (pelicula.getRebaja() > 0) {
+	        double precio = pelicula.getPrecio();
+	        int rebaja = pelicula.getRebaja();
+	        double descuento = (precio * rebaja) / 100;
+	        double precioFinal = precio - descuento;
+	        String precioFormateado = String.format("%.2f", precioFinal);
+	        
+	        model.addAttribute("precioFinal", precioFormateado);
+	    }
+
+	    model.addAttribute("pelicula", pelicula);
 		
 		return "detalles";
 
 	}
 			/* DETALLES */
-	
-	
-	
-			/* TU LISTA */
-	@GetMapping("/lista")
-	public String tulista() {
-		return "lista";
-	}
-			/* TU LISTA */
 
 
 	
@@ -266,6 +309,187 @@ public class goMovieControlador {
 	    Usuario usuario = usuarioServicio.findById(id);
 	    model.addAttribute("usuario", usuario);
 	    return "modificarPerfil";
+	}
+	
+	@GetMapping("/detallecompra/{id_orden}")
+	public String detalleCompra(@PathVariable int id_orden, HttpSession session, Model model) {
+		
+		Orden orden= ordenServicio.findById(id_orden);
+		String numero = orden.getNumero();
+		Date pedido = orden.getFecha_creacion();
+		Date entrega = orden.getFecha_recibida();
+		String direccion = orden.getDireccion();
+		Double total = orden.getTotal();
+		
+		model.addAttribute("numero", numero);
+		model.addAttribute("pedido", pedido);
+		model.addAttribute("entrega", entrega);
+		model.addAttribute("direccion", direccion);
+		model.addAttribute("total", total);
+		
+		List<DetalleOrden> detalles = detalleOrdenServicio.findByIdOrden(id_orden);
+		
+
+		model.addAttribute("detalles", detalles);
+
+		
+		//session
+		model.addAttribute("sesion", session.getAttribute("idusuario"));
+		return "detallecompra";
+	}
+	
+	
+	@PostMapping("/saves")
+	public String guardarPerfil(int id_usuario, String nombre, String apellido, String direccion, String dni, RedirectAttributes redirectAttributes) {
+		System.out.println("he entrado");
+
+	    int clienteID = id_usuario;
+	    boolean dniCorrecto = false;
+	    String campoDNI = dni;
+
+	    if (campoDNI.length() >= 9) {
+	        String cadenanumeros = campoDNI.substring(0, 8);
+	        String letra = campoDNI.substring(8);
+	        
+	        if (cadenanumeros.matches("\\d+")) {
+	            int codlet = Integer.parseInt(cadenanumeros) % 23;
+
+	            switch (codlet) {
+	            case 0:
+			        if (letra.equalsIgnoreCase("T")) {
+			            dniCorrecto = true;
+			        }
+			        break;
+			    case 1:
+			        if (letra.equalsIgnoreCase("R")) {
+			            dniCorrecto = true;
+			        }
+			        break;
+			    case 2:
+			        if (letra.equalsIgnoreCase("W")) {
+			            dniCorrecto = true;
+			        }
+			        break;
+			    case 3:
+			        if (letra.equalsIgnoreCase("A")) {
+			            dniCorrecto = true;
+			        }
+			        break;
+			    case 4:
+			        if (letra.equalsIgnoreCase("G")) {
+			            dniCorrecto = true;
+			        }
+			        break;
+			    case 5:
+			        if (letra.equalsIgnoreCase("M")) {
+			            dniCorrecto = true;
+			        }
+			        break;
+			    case 6:
+			        if (letra.equalsIgnoreCase("Y")) {
+			            dniCorrecto = true;
+			        }
+			        break;
+			    case 7:
+			        if (letra.equalsIgnoreCase("F")) {
+			            dniCorrecto = true;
+			        }
+			        break;
+			    case 8:
+			        if (letra.equalsIgnoreCase("P")) {
+			            dniCorrecto = true;
+			        }
+			        break;
+			    case 9:
+			        if (letra.equalsIgnoreCase("D")) {
+			            dniCorrecto = true;
+			        }
+			        break;
+			    case 10:
+			        if (letra.equalsIgnoreCase("X")) {
+			            dniCorrecto = true;
+			        }
+			        break;
+			    case 11:
+			        if (letra.equalsIgnoreCase("B")) {
+			            dniCorrecto = true;
+			        }
+			        break;
+			    case 12:
+			        if (letra.equalsIgnoreCase("N")) {
+			            dniCorrecto = true;
+			        }
+			        break;
+			    case 13:
+			        if (letra.equalsIgnoreCase("J")) {
+			            dniCorrecto = true;
+			        }
+			        break;
+			    case 14:
+			        if (letra.equalsIgnoreCase("Z")) {
+			            dniCorrecto = true;
+			        }
+			        break;
+			    case 15:
+			        if (letra.equalsIgnoreCase("S")) {
+			            dniCorrecto = true;
+			        }
+			        break;
+			    case 16:
+			        if (letra.equalsIgnoreCase("Q")) {
+			            dniCorrecto = true;
+			        }
+			        break;
+			    case 17:
+			        if (letra.equalsIgnoreCase("V")) {
+			            dniCorrecto = true;
+			        }
+			        break;
+			    case 18:
+			        if (letra.equalsIgnoreCase("H")) {
+			            dniCorrecto = true;
+			        }
+			        break;
+			    case 19:
+			        if (letra.equalsIgnoreCase("L")) {
+			            dniCorrecto = true;
+			        }
+			        break;
+			    case 20:
+			        if (letra.equalsIgnoreCase("C")) {
+			            dniCorrecto = true;
+			        }
+			        break;
+			    case 21:
+			        if (letra.equalsIgnoreCase("K")) {
+			            dniCorrecto = true;
+			        }
+			        break;
+			    case 22:
+			        if (letra.equalsIgnoreCase("E")) {
+			            dniCorrecto = true;
+			        }
+			        break;
+			}
+
+	            // At this point, dniCorrecto is either true or false, depending on whether the DNI is valid.
+
+	            if (dniCorrecto) {
+	                dni = dni.toUpperCase();
+	                usuarioServicio.actualizarPerfil(id_usuario, nombre, apellido, direccion, dni);
+	                return "redirect:/perfil";
+	            } else {
+	                redirectAttributes.addFlashAttribute("dniError", "DNI invalido.Introduce un DNI real.");
+	                return "redirect:/modificarPerfil/" + id_usuario;
+	            }
+	        } else {
+	            redirectAttributes.addFlashAttribute("dniError", "Formato de DNI invalido. Introduce un DNI real.");
+	            return "redirect:/modificarPerfil/" + id_usuario;
+	        }
+	    } else {
+	        redirectAttributes.addFlashAttribute("dniError", "Formato de DNI invalido. Introduce un DNI real.");
+	        return "redirect:/modificarPerfil/" + id_usuario;
+	    }
 	}
 			/* LOGIN Y USUARIO */
 	
@@ -324,6 +548,33 @@ public class goMovieControlador {
 		
 		return "redirect:/administracion";
 	}
+	
+    @GetMapping("/agregarPelicula")
+    public String agregarPelicula(Model model) {
+        List<Genero> generos = generoServicio.findAll();
+        List<Tag> tags = tagServicio.findAll();
+        
+        model.addAttribute("generos", generos);
+        model.addAttribute("tags", tags);
+        model.addAttribute("pelicula", new Pelicula());
+        
+        return "agregarPelicula";
+    }
+    
+    @PostMapping("/guardarPelicula")
+    public String guardarPelicula(@ModelAttribute("pelicula") Pelicula pelicula, @RequestParam("tagIds") List<Integer> tagIds) {
+
+
+        List<Tag> tagsSeleccionados = tagServicio.findAllById(tagIds);
+        pelicula.setTags(new HashSet<>(tagsSeleccionados));
+        String foto = pelicula.getFoto();
+        String ruta = "../assets/img/peliculas/";
+        pelicula.setFoto(ruta+foto);
+
+        peliculaServicio.save(pelicula);
+
+        return "redirect:/administracion";
+    }
 			/* ADMINISTRACION */
 	
 			/* CARRITO */
@@ -339,8 +590,19 @@ public class goMovieControlador {
 		Pelicula pelicula = peliculaServicio.get(id_pelicula);
         detalleOrden.setNombre(pelicula.getNombre());
         detalleOrden.setCantidad(cantidad);
-        detalleOrden.setTotal(pelicula.getPrecio() * cantidad);
-        detalleOrden.setPrecio(pelicula.getPrecio());
+        
+        if (pelicula.getRebaja() > 0) {
+            double precio = pelicula.getPrecio();
+            int rebaja = pelicula.getRebaja();
+            double descuento = (precio * rebaja) / 100;
+            double precioFinal = precio - descuento;
+            detalleOrden.setPrecio(Math.round(precioFinal * 100.0) / 100.0);
+            detalleOrden.setTotal(Math.round(precioFinal * cantidad * 100.0) / 100.0);
+        } else {
+            detalleOrden.setPrecio(pelicula.getPrecio());
+            detalleOrden.setTotal(pelicula.getPrecio() * cantidad);
+        }
+        
         
 
         detalleOrden.setPelicula(pelicula);
@@ -760,8 +1022,7 @@ public class goMovieControlador {
 		
 		
 		if (orden.getCantidad() == 0) {
-			log.info("Carrito vacio");
-			//return "/";
+
 			String referer = request.getHeader("Referer");
 			return "redirect:" + referer; 
 		}else {
@@ -781,32 +1042,6 @@ public class goMovieControlador {
 		}		
 	}
 		
-	@GetMapping("/detallecompra/{id_orden}")
-	public String detalleCompra(@PathVariable int id_orden, HttpSession session, Model model) {
-		//logger.info("Id de la orden: {}", id);
-		Optional<Orden> orden=ordenServicio.findById(id_orden);
-		String numero = orden.get().getNumero();
-		Date pedido = orden.get().getFecha_creacion();
-		Date entrega = orden.get().getFecha_recibida();
-		String direccion = orden.get().getDireccion();
-		Double total = orden.get().getTotal();
-		
-		model.addAttribute("numero", numero);
-		model.addAttribute("pedido", pedido);
-		model.addAttribute("entrega", entrega);
-		model.addAttribute("direccion", direccion);
-		model.addAttribute("total", total);
-		
-		List<DetalleOrden> detalles = detalleOrdenServicio.findByIdOrden(id_orden);
-		
-
-		model.addAttribute("detalles", detalles);
-
-		
-		//session
-		model.addAttribute("sesion", session.getAttribute("idusuario"));
-		return "detallecompra";
-	}
 
 	
 }

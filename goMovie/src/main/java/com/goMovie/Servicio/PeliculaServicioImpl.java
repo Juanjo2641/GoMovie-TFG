@@ -65,5 +65,10 @@ public class PeliculaServicioImpl implements PeliculaServicio {
 		return peliculaRepositorio.administracion(descatalogado);
 	}
 
+	@Override
+	public List<Pelicula> findByIDs(List<Integer> ids) {
+	    return peliculaRepositorio.findByIDs(ids);
+	}
+
 }
 

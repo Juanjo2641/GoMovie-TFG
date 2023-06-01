@@ -60,26 +60,20 @@
                     <table class="table">
 						<thead>
 							<tr>
-								<th>Nº Orden</th>
 								<th>Pedido</th>
-								<th>Entrega</th>
-								<th>Dirección</th>
-								<th>Cantidad</th>
+                                <th>Dirección</th>
 								<th>Total</th>
 								<th></th>
 							</tr>
 						</thead>
 						<tbody>
 							<tr th:each="orden: ${ordenes}">
-								<td th:text="${orden.numero}"></td>
 								<td th:text="${orden.fecha_creacion}"></td>
-								<td th:text="${orden.fecha_recibida}"></td>
-								<td th:text="${orden.direccion}"></td>
-								<td th:text="${orden.cantidad}"></td>
+                                <td th:text="${orden.direccion}"></td>
 								<td th:text="${orden.total}+€"></td>
 								<td><a th:href="@{/detallecompra/{id_orden} (id_orden=${orden.id}) }" class="btn btn-primary">Detalles</a></td>
-								</tr>
-							</tbody>
+                            </tr>
+                        </tbody>
 					</table>
                 </div>
             </div>

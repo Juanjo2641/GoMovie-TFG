@@ -32,4 +32,9 @@ public class TagServicioImpl implements TagServicio {
 		Optional<Tag> tagOptional = tagRepositorio.findById(id);
 	    return tagOptional.orElse(null); 
 	}
+
+	@Override
+	public List<Tag> findAllById(List<Integer> tagIds) {
+		return tagRepositorio.findAllById(tagIds);
+	}
 }

@@ -35,5 +35,8 @@ public interface PeliculaRepositorio extends JpaRepository<Pelicula, Integer> {
 	@Query(value = "SELECT * FROM Peliculas WHERE id_pelicula = :id", nativeQuery = true)
 	Pelicula get(@Param("id") int id);
 
+	@Query("SELECT p FROM Pelicula p WHERE p.id IN :ids")
+	List<Pelicula> findByIDs(@Param("ids") List<Integer> ids);
+
 
 }

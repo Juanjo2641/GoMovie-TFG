@@ -11,7 +11,7 @@ import com.goMovie.Modelo.Usuario;
 @Service
 public interface OrdenServicio {
 	List<Orden> findAll();
-	Optional<Orden> findById(int id_orden);
+	Orden findById(int id_orden);
 	Orden save (Orden orden);
 	String generarNumeroOrden();
 	List<Orden> findByUsuario (Usuario usuario);

@@ -2,6 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>GoMovie!</title>
   <link rel="icon" href="../assets/img/favicon.ico" th:href="@{/assets/img/favicon.ico}"/>
   <link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet" />
@@ -12,97 +13,46 @@
 
 
 
-    <header id="headerLista">
+    <header id="headerLista" >
       <div class="pelicula-info">
-        <img class="pelicula-cover" src="https://via.placeholder.com/150x200" alt="Movie Cover">
+        <img class="pelicula-cover"  alt="Movie Cover" th:src="${peliculaDestacada.foto}">
         <div class="pelicula-details">
-          <h1 class="pelicula-title">Título de la película</h1>
-          <p class="pelicula-description">Descripción de la película</p>
-          <p class="pelicula-genre">Género de la película</p>
-          <button class="watch-now-btn">Ver ahora</button>
+          <h1 class="pelicula-title" th:text="${peliculaDestacada.nombre}">Título de la película</h1>
+          <p class="pelicula-description" th:text="${peliculaDestacada.descripcion}">Descripción de la película</p>
+          <p class="pelicula-genre" th:text="${peliculaDestacada.genero.nombre}">Género de la película</p>
+          <button class="watch-now-btn">Comprar ahora</button>
         </div>
       </div>
     </header>
 
-    <div class="peliculas-recomendadas contenedor">
+    <div class="peliculas-recomendadas contenedor" th:if ="${peliculasDeseadas.size} > 0">
       <div class="contenedor-titulo-controles">
-        <h3>Tus guardados</h3>
+        
+        <h3>Tus deseados</h3>
         <div class="indicadores"></div>
       </div>
-
+		
       <div class="contenedor-principal">
         <button role="button" id="flecha-izquierda" class="flecha-izquierda"><i class="fas fa-angle-left"></i></button>
 
         <div class="contenedor-carousel">
           <div class="carousel">
-            <div class="pelicula">
-              <a href="#"><img src="../assets/img/1.png" alt=""></a>
+            <div class="pelicula" th:each="pelicula: ${peliculasDeseadas}">
+              <a th:href="@{'/detalles/' + ${pelicula.id_pelicula}}"><img class="img-carousel" th:src="${pelicula.foto}" alt=""></a>
             </div>
-            <div class="pelicula">
-              <a href="#"><img src="../assets/img/2.png" alt=""></a>
-            </div>
-            <div class="pelicula">
-              <a href="#"><img src="../assets/img/3.png" alt=""></a>
-            </div>
-            <div class="pelicula">
-              <a href="#"><img src="../assets/img/4.png" alt=""></a>
-            </div>
-            <div class="pelicula">
-              <a href="#"><img src="../assets/img/5.png" alt=""></a>
-            </div>
-            <div class="pelicula">
-              <a href="#"><img src="../assets/img/6.png" alt=""></a>
-            </div>
-            <div class="pelicula">
-              <a href="#"><img src="../assets/img/7.png" alt=""></a>
-            </div>
-            <div class="pelicula">
-              <a href="#"><img src="../assets/img/1.png" alt=""></a>
-            </div>
-            <div class="pelicula">
-              <a href="#"><img src="../assets/img/2.png" alt=""></a>
-            </div>
-            <div class="pelicula">
-              <a href="#"><img src="../assets/img/3.png" alt=""></a>
-            </div>
-            <div class="pelicula">
-              <a href="#"><img src="../assets/img/1.png" alt=""></a>
-            </div>
-            <div class="pelicula">
-              <a href="#"><img src="../assets/img/2.png" alt=""></a>
-            </div>
-            <div class="pelicula">
-              <a href="#"><img src="../assets/img/3.png" alt=""></a>
-            </div>
-            <div class="pelicula">
-              <a href="#"><img src="../assets/img/4.png" alt=""></a>
-            </div>
-            <div class="pelicula">
-              <a href="#"><img src="../assets/img/5.png" alt=""></a>
-            </div>
-            <div class="pelicula">
-              <a href="#"><img src="../assets/img/6.png" alt=""></a>
-            </div>
-            <div class="pelicula">
-              <a href="#"><img src="../assets/img/7.png" alt=""></a>
-            </div>
-            <div class="pelicula">
-              <a href="#"><img src="../assets/img/1.png" alt=""></a>
-            </div>
-            <div class="pelicula">
-              <a href="#"><img src="../assets/img/2.png" alt=""></a>
-            </div>
-            <div class="pelicula">
-              <a href="#"><img src="../assets/img/3.png" alt=""></a>
-            </div>
-            <div class="pelicula">
-              <a href="#"><img src="../assets/img/4.png" alt=""></a>
-            </div>
+           <!--<form th:action="@{/eliminarDeseadas}" method="post">
+				    <input type="hidden" name="id_pelicula" th:value="${pelicula.id_pelicula}" />
+				    <button type="submit">Eliminar</button>
+				</form>-->
           </div>
         </div>
 
         <button role="button" id="flecha-derecha" class="flecha-derecha"><i class="fas fa-angle-right"></i></button>
       </div>
+    </div>
+    
+    <div th:if ="${peliculasDeseadas.size} == 0">
+    	 <h3>No se ha encontrado ninguna pelicula.</h3>
     </div>
 
 
@@ -112,6 +62,7 @@
 
   <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
   <script src="../js/script.js"></script>
+  <script src="../js/main.js"></script>
 
 </body>
 </html>

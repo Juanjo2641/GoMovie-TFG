@@ -21,5 +21,5 @@ public interface UsuarioServicio extends UserDetailsService{
 	public void actualizarDir(int idUsuario, String direccion);
 	public void actualizarDni(int idUsuario, String dni);
 	public int cogerPerfilId(String emailLogueado);
-	
+	int actualizarPerfil(int id_usuario, String nombre, String apellido, String direccion, String dni);
 }

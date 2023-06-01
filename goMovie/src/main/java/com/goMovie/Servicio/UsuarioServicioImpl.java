@@ -71,7 +71,7 @@ public class UsuarioServicioImpl implements UsuarioServicio{
 	private Collection<? extends GrantedAuthority> mapearAutoridadesRoles(Collection<Rol> roles){
 		return roles.stream().map(role -> new SimpleGrantedAuthority(role.getNombre())).collect(Collectors.toList());
 	}
-
+	
 	public UsuarioRepositorio getUsuarioRepositorio() {
 		return usuarioRepositorio;
 	}
@@ -84,6 +84,11 @@ public class UsuarioServicioImpl implements UsuarioServicio{
 	@Override
 	public Usuario findById(int id_usuario) {
 		return usuarioRepositorio.findById(id_usuario);
+	}
+	
+	@Override
+	public int actualizarPerfil(int id_usuario, String nombre, String apellido, String direccion, String dni) {
+		return usuarioRepositorio.actualizarPerfil(id_usuario, nombre, apellido, direccion, dni);
 	}
 
 	@Override
@@ -111,6 +116,9 @@ public class UsuarioServicioImpl implements UsuarioServicio{
 	public int cogerPerfilId(String emailLogueado) {
 		return usuarioRepositorio.cogerPerfilId(emailLogueado);
 	}
+
+
+
 	
 	
 	

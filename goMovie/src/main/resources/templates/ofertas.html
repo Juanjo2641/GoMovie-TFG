@@ -2,6 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>GoMovie!</title>
     <link rel="icon" href="../assets/img/favicon.ico" th:href="@{/assets/img/favicon.ico}"/>
     <link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet" />
@@ -46,15 +47,15 @@
 			</tr>
 			</thead>
 			<tbody>
-			<tr th:each="pelicula : ${peliculasDestacadas}">
-				<td><img th:src="${pelicula.foto}" class="rebajaFoto"></td>
-				<td th:text="${pelicula.nombre}"></td>
-				<td th:text="${pelicula.rebaja + '%'}"></td>
-				<td class="old-price" th:text="${pelicula.precio} + '€'"></td>
-				<td class="price" th:text="${preciosFinales.get(pelicula)} + '€'"></td>
-				<td th:text="${pelicula.genero.nombre}"></td>
-			</tr>
-
+				<!--<a class="tituloPelicula" th:href="@{/detalles/} + ${pelicula.id_pelicula}"></a>-->
+				<tr th:each="pelicula : ${peliculasDestacadas}">
+					<td><img th:src="${pelicula.foto}" class="rebajaFoto"></td>
+					<td th:text="${pelicula.nombre}"></td>
+					<td th:text="${pelicula.rebaja + '%'}"></td>
+					<td class="old-price" th:text="${pelicula.precio} + '€'"></td>
+					<td class="price" th:text="${preciosFinales.get(pelicula)} + '€'"></td>
+					<td th:text="${pelicula.genero.nombre}"></td>
+				</tr>
 			</tbody>
 		</table>
 
@@ -70,7 +71,17 @@
 							<h3 th:text="${pelicula.nombre}"></h3>
 							<p class="old-price" th:text="${pelicula.precio} + '€'"></p>
 							<p th:text="${preciosFinales.get(pelicula)} + '€'"></p>
-							<button>Comprar</button>
+
+							<form th:action="@{/añadirCarrito}" method="POST" class="inline-form">
+
+								<input type="hidden" th:value="${pelicula.id_pelicula}" name="id_pelicula" />
+
+								<button class="comprar-btn" data-bs-dismiss="modal" type="submit" th:classappend="${pelicula.stock <= 0} ? 'disabled btn-danger' : ' '">
+									<span th:if="${pelicula.stock > 0}">Comprar</span>
+									<span th:if="${pelicula.stock <= 0}">No disp./span>
+								</button>
+
+							</form>
 						</div>
 					</li>
 				</ul>

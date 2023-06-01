@@ -12,30 +12,47 @@
     <nav th:replace="inicio :: nav"></nav>
 
     <div class="container-detalles">
+
         <img class="img-detalles" th:src="${pelicula.foto}" th:alt="${pelicula.nombre}">
-		<form th:action="@{/añadirCarrito}" method="POST">
-	        <div class="detalle">
-	            <input type="hidden" th:value="${pelicula.id_pelicula}" name="id_pelicula" />
-	            <h1 th:text="${pelicula.nombre}"></h1>
-	            <h3 th:text="${pelicula.precio} + '€'"></h3>
-	            <h5 th:text="${pelicula.genero.nombre}"></h5>
-	            <h5 th:text="${pelicula.duracion}"></h5>
-	
-	            <div class="cuadrante">
-	                ⭐&nbsp;<span th:text="${pelicula.puntuacion}"> </span>&nbsp;/ 5
-	            </div>
-	
-	            <div class="caja-roja"> <p th:text="${pelicula.descripcion}"></p> </div>
-				
-				<button class="comprar-btn" data-bs-dismiss="modal" type="submit" th:classappend="${pelicula.stock <= 0} ? 'disabled btn-danger' : ' '">
-					<span th:if="${pelicula.stock > 0}">🛒Añadir al carrito</span>
-					<span th:if="${pelicula.stock <= 0}">No disponible</span>
-				</button>
-	        </div>
-		</form>
+
+		<h1 th:text="${pelicula.nombre}"></h1>
+		<del  th:if="${pelicula.rebaja} > 0"><h3 class="rebaja-del" th:text="${pelicula.precio} + '€'"></h3></del>
+		<h3 th:if="${pelicula.rebaja} <= 0" th:text="${pelicula.precio} + '€'"></h3>
+		<h3 th:if="${pelicula.rebaja} > 0" th:text="${precioFinal} + '€'"></h3>
+		<h5 th:text="${pelicula.genero.nombre}"></h5>
+		<h5 th:text="${pelicula.duracion}"></h5>
+		<div class="cuadrante">
+			⭐&nbsp;<span th:text="${pelicula.puntuacion}"> </span>&nbsp;/ 5
+		</div>
+		<div class="caja-roja"> <p th:text="${pelicula.descripcion}"></p> </div>
+
+		<div class="formulariosAlign">
+
+			<form th:action="@{/deseada}" method="post" class="inline-form">
+
+				<input type="hidden" name="id_pelicula" th:value="${pelicula.id_pelicula}" />
+				<button type="submit" class="comprar-btn"><i class='bx bxs-bookmark bx-xs' ></i></button>
+
+			</form>
+
+			<form th:action="@{/añadirCarrito}" method="POST">
+				<div class="detalle">
+					<input type="hidden" th:value="${pelicula.id_pelicula}" name="id_pelicula" />
+
+					<div class="div-guardar">
+						<button class="comprar-btn" data-bs-dismiss="modal" type="submit" th:classappend="${pelicula.stock <= 0} ? 'disabled btn-danger' : ' '">
+							<span th:if="${pelicula.stock > 0}">Comprar ahora</span>
+							<span th:if="${pelicula.stock <= 0}">No disponible</span>
+						</button>
+					</div>
+				</div>
+			</form>
+
+		</div>
+
     </div>
 
-    <a th:href="@{/inicio}"><button class="btn-detalles">Volver</button></a>
+	<a th:href="@{/inicio}"><button class="btn-detalles">Volver</button></a>
 	
     <footer th:replace="index :: footer"></footer>
 

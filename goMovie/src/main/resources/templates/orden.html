@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>GoMovie!</title>
     <link rel="icon" href="../assets/img/favicon.ico" th:href="@{/assets/img/favicon.ico}"/>
     <link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet" />
@@ -13,120 +14,106 @@
 
   <nav th:replace="inicio :: nav"></nav>
 
-  <div class="container margend">
-    <div class="container">
-      <form id="formcompra" name="formcompra" th:action="@{/saveOrder}" th:object="${usuario}" method="post">
-      <h1 class="mt-4 mb-3">
-        Su pedido gracias ¡¡<small>Resumen de la orden</small>
-      </h1>
+    <div class="container-margend">
 
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a th:href="@{/}">Home</a></li>
-        <li class="breadcrumb-item active">Comprar</li>
-      </ol>
+        <div class="container">
 
+            <form id="formcompra" name="formcompra" th:action="@{/saveOrder}" th:object="${usuario}" method="post">
 
-      <div class="card mb-4">
-        <div class="card-body">
-          <div class="row">
-            <div class="col-lg-9">
-              <div class="card-body">
-                <h5 class="card-title">
-                  DATOS ORDEN
-                </h5>
-                <h6 th:text=" 'Nombre: '+ ${usuario[0].nombre}"> </h6>
-                <h6 th:text="'Correo: '+  ${usuario[0].email}"></h6>
-				
-				<div class="input-group mb-3">
-    <span class="input-group-text" id="inputGroup-sizing-default">Dirección:</span>
-    <div th:if="${usuario[0].direccion == null or usuario[0].direccion == ''}">
-        <input name="direccion" th:value="${usuario[0].direccion}" type="text" class="form-control" aria-label="Sizing example input"
-        aria-describedby="inputGroup-sizing-default" minlength="3" maxlength="25" required>
-    </div>
+                <h1>INFORMACIÓN DE SU PEDIDO</h1>
 
-    <div th:if="${usuario[0].direccion != null and usuario[0].direccion != '' }">
-        <input name="direccion" th:value="${usuario[0].direccion}" type="text" class="form-control"
-        aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" minlength="3" maxlength="25" required>
-    </div>
-</div>
+                <hr class="red-separator" id="separador2">
 
-<div class="input-group mb-3">
-    <span class="input-group-text" id="inputGroup-sizing-default">DNI:</span>
-    <div th:if="${usuario[0].dni == null or usuario[0].dni == ''}">
-        <input name="dni" th:value="${usuario[0].dni}" type="text" class="form-control" aria-label="Sizing example input"
-        aria-describedby="inputGroup-sizing-default"minlength="9" maxlength="9" required>
-        
-    </div>
+                <div class="row">
+                    <div class="columnas">
+                        <div class="datosCont">
+                            <h3>--DATOS ORDEN--</h3>
+                            <br>
+                            <b><p>Nombre:</p></b>
+                            <p th:text="${usuario[0].nombre}"></p>
+                            <br>
+                            <b><p>Correo:</p></b>
+                            <p th:text="${usuario[0].email}"></p>
 
-    <div th:if="${usuario[0].dni != null and usuario[0].dni != '' }">
-        <input name="dni" th:value="${usuario[0].dni}" type="text" class="form-control"
-        aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"minlength="9" maxlength="9" readonly>
-    </div>
-</div>
-<div class="input-group mb-3">
-<span th:if="${dniError != null and dniError != '' }" class="alert alert-danger" th:text="${dniError}"></span>
-</div>
-				
-                
+                            <div class="input-group mb-3">
+                                <br>
+                                <b>Dirección:</b>
+                                <div th:if="${usuario[0].direccion == null or usuario[0].direccion == ''}">
+                                    <input name="direccion" th:value="${usuario[0].direccion}" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" minlength="3" maxlength="25" required>
+                                </div>
+                                <br>
+                                <div th:if="${usuario[0].direccion != null and usuario[0].direccion != '' }">
+                                    <input name="direccion" th:value="${usuario[0].direccion}" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" minlength="3" maxlength="25" required>
+                                </div>
+                            </div>
 
+                            <div class="input-group mb-3">
+                                <br>
+                                <b>DNI:</b>
+                                <div th:if="${usuario[0].dni == null or usuario[0].dni == ''}">
+                                    <input name="dni" th:value="${usuario[0].dni}" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"minlength="9" maxlength="9" required>
+                                </div>
+                                <div th:if="${usuario[0].dni != null and usuario[0].dni != '' }">
+                                    <input name="dni" th:value="${usuario[0].dni}" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"minlength="9" maxlength="9" readonly>
+                                </div>
+                            </div>
 
-                
-                <h5 class="card-title">
-                  PRODUCTOS
-                </h5>
-                <div class="alert alert-light" role="alert">
-                  <table class="table">
-                    <thead>
-                      <tr>
-                        <th scope="col">Producto</th>
-                        <th scope="col">Precio</th>
-                        <th scope="col">Cantidad</th>
-                        <th scope="col">Total</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr th:each="orden:${carrito}">
-                        <td th:text="${orden.nombre}"></td>
-                        <td th:text="${orden.precio}+€"></td>
-                        <td th:text="${orden.cantidad}"></td>
-                        <td th:text="${orden.total}+€"></td>
+                            <div class="input-group mb-3">
+                                <span th:if="${dniError != null and dniError != '' }" class="alert alert-danger" th:text="${dniError}"></span>
+                            </div>
 
-                      </tr>
-                    </tbody>
-                  </table>
+                            <br>
+
+                            <div class="alert alert-light" role="alert">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Producto</th>
+                                            <th scope="col">Precio</th>
+                                            <th scope="col">Cantidad</th>
+                                            <th scope="col">Total</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr th:each="orden:${carrito}">
+                                            <td th:text="${orden.nombre}"></td>
+                                            <td th:text="${orden.precio}+€"></td>
+                                            <td th:text="${orden.cantidad}"></td>
+                                            <td th:text="${orden.total}+€"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3">
+                        <h3>--RESUMEN ORDEN--</h3>
+                        <ul class="list-group">
+                            <p><b>Total:</b>
+                            <span th:text="${orden.total}+€"></span></p>
+                            <button type="submit" class="comprar-btn">Comprar</button>
+                        </ul>
+                    </div>
                 </div>
+            </form>
 
-              </div>
-            </div>
-
-
-            <div class="col-lg-3">
-              <h2 class="card-title">Resumen Orden</h2>
-
-              <ul class="list-group">
-                <li class="list-group-item">
-                  <h5 th:text=" 'Total:  '+  ${orden.total}+€"></h5>
-                </li>
-                <button type="submit" class="btn btn-dark">Comprar</button>
-              </ul>
-            </div>
-          </div>
         </div>
-      </div>
-    </form>
+
+        <div class="volverOrden"><a th:href="@{/carrito}"><button class="btn-perfilll">VOLVER</button></a></div>
+
     </div>
-  </div>
-
-<script type="text/javascript"></script>
-
-  <footer th:replace="index :: footer"></footer>
 
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script th:src="@{/js/scripts.js}"></script>
-  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-  <script src="js/compra.js"></script>
-  <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+
+    <script type="text/javascript"></script>
+
+    <footer th:replace="index :: footer"></footer>
+
+    <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
+    <script th:src="@{/js/scripts.js}"></script>
+    <script defer src="../js/compra.js"></script>
+
 </body>
 
 </html>

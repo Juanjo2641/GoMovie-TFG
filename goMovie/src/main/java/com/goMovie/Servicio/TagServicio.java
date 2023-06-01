@@ -16,4 +16,5 @@ public interface TagServicio {
 	Tag findByNombre(String nombre);
 	List<Tag> findAll();
 	Tag findByID(int id);
+	List<Tag> findAllById(List<Integer> tagIds);
 }

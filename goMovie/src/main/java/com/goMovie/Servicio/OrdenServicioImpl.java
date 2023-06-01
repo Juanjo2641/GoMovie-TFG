@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.goMovie.Modelo.Orden;
+import com.goMovie.Modelo.Tag;
 import com.goMovie.Modelo.Usuario;
 import com.goMovie.Repositorio.OrdenRepositorio;
 import com.goMovie.Repositorio.PeliculaRepositorio;
@@ -25,8 +26,9 @@ public class OrdenServicioImpl implements OrdenServicio {
 	}
 	
 	@Override
-	public Optional<Orden> findById(int id_orden) {
-		return ordenRepositorio.findById(id_orden);
+	public Orden findById(int id_orden) {
+		Optional<Orden> ordenOptional = ordenRepositorio.findById(id_orden);
+	    return ordenOptional.orElse(null); 
 	}
 
 	

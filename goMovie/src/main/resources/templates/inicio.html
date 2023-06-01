@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:fragment="head">
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>GoMovie!</title>
     <link rel="icon" href="../assets/img/favicon.ico" th:href="@{/assets/img/favicon.ico}"/>
     <link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet" />
@@ -107,18 +107,54 @@
 
     <main id="mainInicio">
 
-        <div class="row" >
+        <div class="row">
             <div class="producto" th:each="pelicula: ${peliculas}">
-                <a class="tituloPelicula" th:href="@{/detalles/} + ${pelicula.id_pelicula}">
-                	<img th:src="${pelicula.foto}" alt="Movie Poster">
-                	<h2 id="h2Inicio" th:text="${pelicula.nombre}">Movie Title</h2>
-                	<th:block th:each="tag : ${pelicula.tags}">
-                		<a th:href="@{'/' + ${tag.nombre}}"><span th:text="' [ ' + ${tag.nombre} + ' ] '"></span></a>
-                	</th:block>
-                </a>
-    
+
+                <div class="fotoPelicula">
+                    <a class="tituloPelicula" th:href="@{/detalles/} + ${pelicula.id_pelicula}">
+                        <img th:src="${pelicula.foto}" alt="Movie Poster" class="fotoPelicula">
+                    </a>
+                </div>
+
+
+                <div class="elementos">
+
+                    <div>
+
+                        <a class="tituloPelicula" th:href="@{/detalles/} + ${pelicula.id_pelicula}"><h2 id="h2Inicio" th:text="${pelicula.nombre}">Movie Title</h2></a>
+                        <th:block th:each="tag : ${pelicula.tags}">
+                            <a th:href="@{'/' + ${tag.nombre}}"><span th:text="' [ ' + ${tag.nombre} + ' ] '"></span></a>
+                        </th:block>
+
+                        <br>
+
+                        <form th:action="@{/deseada}" method="post" class="inline-form">
+								
+                            <input type="hidden" name="id_pelicula" th:value="${pelicula.id_pelicula}" />
+                            <button type="submit" class="comprar-btn"><i class='bx bxs-bookmark bx-md' ></i></button>
+
+                        </form>
+
+                        <form th:action="@{/añadirCarrito}" method="POST" class="inline-form">
+
+                            <input type="hidden" th:value="${pelicula.id_pelicula}" name="id_pelicula" />
+
+                            <button class="comprar-btn" data-bs-dismiss="modal" type="submit" th:classappend="${pelicula.stock <= 0} ? 'disabled btn-danger' : ' '">
+                                <span th:if="${pelicula.stock > 0}"><i class='bx bxs-cart bx-md' ></i></span>
+                                <span th:if="${pelicula.stock <= 0}"><i class='bx bx-unlink bx-md'></i></span>
+                            </button>
+                        </form>
+
+                    </div>
+
+                </div>
+
+
             </div>
+
         </div>
+        
+
 
     </main>
 

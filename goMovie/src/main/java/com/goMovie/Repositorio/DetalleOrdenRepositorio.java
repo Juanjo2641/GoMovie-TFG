@@ -16,7 +16,7 @@ import com.goMovie.Modelo.DetalleOrden;
 @Repository
 public interface DetalleOrdenRepositorio extends JpaRepository<DetalleOrden, Integer>{
 	
-	@Query(value="SELECT * FROM Detalles WHERE id = :id_orden", nativeQuery = true)
+	@Query(value="SELECT * FROM Detalles WHERE orden_id = :id_orden", nativeQuery = true)
 	List<DetalleOrden> findByIdOrden(@Param("id_orden") int id_orden);
     
 }

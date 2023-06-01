@@ -161,7 +161,8 @@
     }
     
    	.icons:hover{
-    	color:red !important; 
+    	color:red !important;
+    	transition: 300ms all;
     }
 
     .dark-light i,
@@ -299,6 +300,15 @@
     }
 
     /* -------- SECCIÓN INICIO -------- */
+
+
+    .elementos{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 180px;
+    }
+
     .separadoresPag{
         border-color: red;
         width: 85%;
@@ -306,21 +316,22 @@
         margin: 0 auto 20px auto;
     }
 
+    .inline-form {
+        display: inline-block;
+    }
+
     .botonesPag:hover{
         color: red;
+        transition: 300ms all;
+    }
+
+    #h2Inicio:hover{
+        margin:0;
     }
 
     #h2Inicio:hover{
         color: red;
-    }
-
-    .producto img:hover{
-        background-color: red;
-        opacity: 0.9;
-    }
-
-    .producto img{
-        height: auto;
+        transition: 300ms all;
     }
 
     .ulul{
@@ -335,6 +346,25 @@
 
     .my-button:hover{
         color: white;
+        transition: 300ms all;
+    }
+	
+	.fav{
+		background: none ;
+		color:red;
+		padding:10px;
+		border:none;
+	}
+	
+	
+	.bxs-bookmark:hover{
+		color:red;
+		transition: 300ms all;
+	}
+
+	.bxs-cart:hover{
+        color:red;
+        transition: 300ms all;
     }
 
     .dropbtn {
@@ -355,7 +385,7 @@
         text-align: center;
     }
 
-    /* The container <div> - needed to position the dropdown content */
+    
     .dropdown {
         position: relative;
         display: inline-block;
@@ -363,7 +393,7 @@
     }
 
 		
-    /* Dropdown Content (Hidden by Default) */
+    
     .dropdown-content {
         display: none;
         position: absolute;
@@ -372,7 +402,7 @@
         box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     }
 
-    /* Links inside the dropdown */
+    
     .dropdown-content a {
         color: black;
         padding: 12px 16px;
@@ -380,15 +410,17 @@
         display: block;
     }
 
-    /* Change color of dropdown links on hover */
-    .dropdown-content a:hover {background-color: #f1f1f1}
+    
+    .dropdown-content a:hover {
+        background-color: #f1f1f1;
+    }
 
-    /* Show the dropdown menu on hover */
+    
     .dropdown:hover .dropdown-content {
         display: block;
     }
 
-    /* Change the background color of the dropdown button when the dropdown content is shown */
+    
     .dropdown:hover .dropbtn {
         background-color: #3e8e41;
     }
@@ -442,6 +474,7 @@
       background-color: white;
       color: red;
       box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.5);
+      transition: 300ms all;
     }
 
 	.textos-buscador{
@@ -514,14 +547,22 @@
     }
 
     .producto img {
-        display: block;
         width: 90%;
-        margin: auto;
-        padding-top: 5px;
+        padding-top: 10px;
+        display: block;
+        margin:auto;
     }
 
-    .producto h2 {
-        margin: 10px 0 0;
+    .producto img:hover{
+        background-color: red;
+        opacity: 0.9;
+    }
+
+    .fotoPelicula{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: auto;
     }
 
     /* - SLIDESHOW */
@@ -617,6 +658,7 @@
     .login-btn a:hover {
       text-decoration: none;
       color: white;
+      transition: 300ms all;
     }
 	
     .logo-login{
@@ -811,6 +853,7 @@
 
     .botones:hover{
         background-color: white;
+        transition: 300ms all;
     }
 
     .inputCarro{
@@ -833,6 +876,7 @@
 
     .borrar:hover{
         color: red;
+        transition: 300ms all;
     }
 
     .keep{
@@ -842,6 +886,7 @@
 
     .keep:hover{
         color: white;
+        transition: 300ms all;
     }
 
     .caja-roja2 {
@@ -869,11 +914,30 @@
         font-size: 16px;
         font-weight: bold;
     }
+    
+    
+	/* -------- ORDEN -------- */
+    .container-margend{
+        margin-top: 100px;
+    }
+
+    .volverOrden{
+        margin-left: 10%;
+    }
+
+    #separador2{
+        margin: 20px auto;
+    }
+
+    #datos{
+        margin-bottom: 20px;
+    }
 
     /* -------- MODIFICAR PERFIL -------- */
     .inputPerfil{
         display: block;
-        width: 20vw;
+        margin: auto;
+        width: 70%;
         color: white;
         padding: 0.375rem 0.75rem;
         font-size: 1rem;
@@ -882,6 +946,21 @@
         border-radius: 0.25rem;
         background-color: #474545;
     }
+
+    .formularioPerfil{
+        display: block;
+        margin:auto;
+        text-align: center;
+    }
+
+    .formularioPerfil b{
+        margin-top: 20%;
+    }
+
+    .datosPerfil{
+        margin-left: 20%;
+    }
+    
 
     /* -------- SECCIÓN OFERTAS -------- */
     .titulillo{
@@ -1046,6 +1125,7 @@
     .contenedor-titulo-controles .indicadores button:hover,
     .contenedor-titulo-controles .indicadores button.activo {
         background: red;
+
     }
 
 
@@ -1194,7 +1274,12 @@
       cursor: pointer;
       margin-top: 10px;
     }
-
+		
+	.img-carousel{
+		height:500px;
+		width: 100px;
+	
+	}
     /* -------- SECCIÓN PRÓXIMAMENTE -------- */
 
 	/* ---- ----- ----- Pelicula Principal ----- ----- ----- */
@@ -1341,16 +1426,21 @@
         margin-bottom: 20px;
     }
 
-
-
-
-    
 	/* -------- SECCIÓN DETALLES -------- */
+
+	.formulariosAlign{
+	    display: flex;
+	    margin-top: 8px;
+    }
+
+    .formulariosAlign form{
+        margin-right: 8px;
+    }
+
 	.comprar-btn {
-	    margin-top: 10px;
         justify-content: center;
         align-items: center;
-        background-color: red;
+        background-color: #ff0000;
         color: white;
         border: none;
         padding: 10px 20px;
@@ -1361,9 +1451,10 @@
         text-align: left;
     }
 
-    .comprar-btn:hover{
-        background-color: white;
+    .comprar-btn:hover, 
+    .guardar-btn:hover{
         color: red;
+        background-color: white;
     }
 
 	.container-detalles{
@@ -1406,12 +1497,12 @@
     }
 
 	.detalle{
-        padding: 4vh 3vw 3vh 3vw;
         font-size: 18px;
 	}
 
 	.container-detalles h1{
-	    text-align: left;
+		margin-top: 30px;
+        text-align: left;
 	}
 
     .btn-detalles{
@@ -1425,7 +1516,28 @@
         font-size: 16px;
         font-weight: bold;
     }
+    
+    .guardar-btn {
+        background-color: #ff0000;
+        color: white;
+        border: none;
+        padding: 3px 6px;
+        border-radius: 5px;
+    }
 
+    .comprar-btn:hover{
+        color: red;
+        background-color: white;
+    }
+    
+    .div-guardar{
+        position:relative;
+    }
+    
+    .rebaja-del{
+    color:grey;
+    }
+		
     /* -------- FOOTER -------- */
     
     footer {
@@ -1451,9 +1563,6 @@
     	widht:170px;
     	height:170px;
     	padding-bottom:15%;
-    	
-    	
-    
     }
 
 	.header-index h1 {	
@@ -1552,6 +1661,22 @@
         margin: 0 20px 20px 20px;
     }
 
+    .rowPerfil2{
+        background-color: #1d1d1d;
+        padding: 20px;
+        box-shadow:
+           inset 0 -3em 3em rgba(0,0,0,0.1),
+                 0 0  0 2px rgb(255,255,255),
+                 0.3em 0.3em 1em rgba(0,0,0,0.3);
+        display: block;
+        margin: auto;
+        width: 50%;
+    }
+
+    .rowPerfil2 b{
+        color: red;
+    }
+
     .perfilTextos{
 
         margin: 30px 40px 10px 40px;
@@ -1592,10 +1717,6 @@
 
     .profile-info {
         margin-bottom: 30px;
-    }
-
-    .profile-info p {
-      margin-bottom: 5px;
     }
 
     .table {

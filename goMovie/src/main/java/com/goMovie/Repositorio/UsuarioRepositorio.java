@@ -39,6 +39,10 @@ public interface UsuarioRepositorio extends JpaRepository<Usuario, Integer>{
     @Query(value="SELECT * FROM Usuarios WHERE id_usuario = :id_usuario", nativeQuery=true)
     Usuario findById(@Param("id_usuario") int id_usuario);
     
-    
+    @Modifying
+    @Transactional    
+    @Query(value="UPDATE `usuarios` SET `nombre` = :nombre, `apellido` = :apellido, `direccion` = :direccion, `dni` = :dni WHERE `usuarios`.`id_usuario` = :id_usuario", nativeQuery=true)
+    int actualizarPerfil(@Param("id_usuario") int id_usuario, @Param("nombre") String nombre, @Param("apellido") String apellido, @Param("direccion") String direccion, @Param("dni") String dni);
+
     
 }
