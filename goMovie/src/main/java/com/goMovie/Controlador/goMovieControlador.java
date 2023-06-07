@@ -61,8 +61,6 @@ public class goMovieControlador {
 	List<DetalleOrden> detalles = new ArrayList<DetalleOrden>();
 	List<Integer> peliculasDeseadas = new ArrayList<>();
 	Orden orden = new Orden();
-	
-	
 
 	
 			/* PAGINAS PRINCIPALES */
@@ -101,7 +99,6 @@ public class goMovieControlador {
 		}else {
 			return "inicio";
 		}
-
 
 	}
 			/* PAGINAS PRINCIPALES */
@@ -341,7 +338,6 @@ public class goMovieControlador {
 	
 	@PostMapping("/saves")
 	public String guardarPerfil(int id_usuario, String nombre, String apellido, String direccion, String dni, RedirectAttributes redirectAttributes) {
-		System.out.println("he entrado");
 
 	    int clienteID = id_usuario;
 	    boolean dniCorrecto = false;
@@ -889,7 +885,7 @@ public class goMovieControlador {
 
 			switch (codlet) {
 			    case 0:
-			        if (letra.equalsIgnoreCase("T")) {
+			    	if (letra.equalsIgnoreCase("T")) {
 			            dniCorrecto = true;
 			        }
 			        break;
@@ -1018,9 +1014,7 @@ public class goMovieControlador {
 				return "redirect:/orden";
 			}
 		}
-		
-		
-		
+
 		if (orden.getCantidad() == 0) {
 
 			String referer = request.getHeader("Referer");

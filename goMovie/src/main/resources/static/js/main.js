@@ -36,7 +36,7 @@ flechaDerecha.addEventListener('click', () => {
 
 
 
-// ? ----- ----- Event Listener para la flecha izquierda. ----- -----
+//  ----- ----- Event Listener para la flecha izquierda. ----- -----
 
 flechaIzquierda.addEventListener('click', () => {
 
@@ -60,7 +60,7 @@ flechaIzquierda.addEventListener('click', () => {
 
 
 
-// ? ----- ----- Paginacion ----- -----
+//  ----- ----- Paginacion ----- -----
 
 const numeroPaginas = Math.ceil(peliculas.length / 5);
 
@@ -98,7 +98,7 @@ for(let i = 0; i < numeroPaginas; i++){
 
 
 
-// ? ----- ----- Hover ----- -----
+//  ----- ----- Hover ----- -----
 
 peliculas.forEach((pelicula) => {
 
@@ -115,14 +115,5 @@ peliculas.forEach((pelicula) => {
         }, 300);
 
     });
-
-});
-
-
-
-
-fila.addEventListener('mouseleave', () => {
-
-    peliculas.forEach(pelicula => pelicula.classList.remove('hover'));
 
 });

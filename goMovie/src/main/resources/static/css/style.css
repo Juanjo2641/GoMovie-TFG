@@ -37,8 +37,7 @@
     nav .nav-bar{
         position: relative;
         height: 100%;
-        max-width: 80%;
-        width: 100%;
+        width: 90%;
         background-color: #1d1d1d;
         padding:0 0;
         margin: auto;
@@ -54,17 +53,16 @@
         cursor: pointer;
         display: none;
     }
-
+	
     .menu .logo-toggle{
         display: none;
     }
 
-	
 
     .nav-bar .nav-links{
         display: flex;
         align-items: center;
-        margin:auto;
+        margin-right:auto;
     }
     
     
@@ -82,6 +80,8 @@
         color: white;
         text-decoration: none;
         padding: 10px;
+        margin-left:50px;
+        
     }
 
     .nav-links li a::before{
@@ -107,7 +107,7 @@
         
     }
    .menu-links{	
-   		margin-left: 20px;
+   		margin-right:60px;
    
    }
 
@@ -444,15 +444,6 @@
         cursor: pointer;
         border-radius: 8px;
 
-        /*background-color: red;
-        color: white;
-        font-size: 1.2rem;
-        padding: 5px 10px;
-        border: none;
-        border-radius: 5px;
-        box-shadow: 0px 0px 5px rgba(255, 255, 255, 0.3);
-        font-weight: bold;
-        font-size: 15px;*/
     }
     
     .button-category{
@@ -499,18 +490,11 @@
         margin-bottom: 20px;
     }
 
-    .gomovie{
+    .gomovie, .gomovie-letters{
         color: #ffffff;
         text-shadow: 0 0 0.3em #ff0000, 0 0 0.3em #ff0000;
         font-size:20px;
-    }
-
-	.gomovienav{
-	
-        item-align: start;
-	
-	}
-	
+    }	
 	
     .gameover{
         font-size: 20px;
@@ -535,6 +519,7 @@
         justify-content: space-around;
         margin-bottom: 20px;
         width: 100%;
+        padding: 0 2px;
     }
 
     .producto {
@@ -738,7 +723,7 @@
     .container-signup{
 	background-image: url("../assets/img/background-login.jpg");
 	
-	height: 100vh;
+	height: 110vh;
 	padding-top: 6vh ;
 
 	
@@ -766,7 +751,7 @@
 
     .form-signup{
         width: 50%;
-        height: 40vh;
+        height: 45vh;
         text-align: center;
         margin: 0 10% 10% 25%;
     }
@@ -842,6 +827,13 @@
         border-radius: 15px;
         box-shadow: 7px 10px #EC1313;
     }
+    
+    .btn-agregarP{
+    	display:flex;
+    	justify-content:space-between;
+    	margin-left:150px;
+    }
+    
 
     /* -------- CARRITO -------- */
     .botones{
@@ -960,6 +952,10 @@
     .datosPerfil{
         margin-left: 20%;
     }
+
+    .contenedorTabla {
+        overflow: auto;
+    }
     
 
     /* -------- SECCIÓN OFERTAS -------- */
@@ -995,7 +991,6 @@
     .tabla img {
         display: block;
         height: auto;
-        max-width: 100%;
     }
 
     .price {
@@ -1210,7 +1205,7 @@
       margin-top: 70px;
     }
 
-    #mainLista {
+    #mainLista, #mainListaof {
       width: 90%;
       margin: 0 auto;
       padding: 40px;
@@ -1367,7 +1362,7 @@
 	}
 
 	.movieimg3{
-	 	background-image: url("http://localhost:8080/assets/img/transformer2.gif");
+	 	background-image: url("http://localhost:8080/assets/img/transformer.gif");
 	}
 	
     .overlay {
@@ -1544,7 +1539,6 @@
         background-color: #1d1d1d;
         color: #fff;
         padding-top:40px;
-        
         width:100%;
     }
 
@@ -1560,9 +1554,8 @@
     }
     
     .logo-gm{
-    	widht:170px;
-    	height:170px;
-    	padding-bottom:15%;
+    	height:80px;
+    	
     }
 
 	.header-index h1 {	
@@ -1593,6 +1586,7 @@
     .footer-extendables {
         display: flex;
         justify-content: space-between;
+        margin-left:60px;
         
     }
 
@@ -1603,11 +1597,17 @@
     }
     
     .extendable-logo {
+    	display:flex;
         flex-basis: 40%;
+        align-item:center;
+        flex-direction:row-reverse;
         
     }
     
-    
+    .copyright{
+		font-size:0.75rem;    
+		margin-top:35px;
+  	}
 
     .extendable h3 {
         font-size: 18px;
@@ -1727,6 +1727,7 @@
         font-weight: bold;
         text-align: left;
     }
+    
 
     .table th, .table td {
         padding: 12px;
@@ -1869,47 +1870,77 @@
         animation: fade-in 0.5s ease;
     }
 
-    /* MEDIA QUERIES */
+    /* ------------------------------------------------------------MEDIA QUERIES ------------------------------------------------------------------------ */
+    
     @media screen and (max-width: 768px) {
+     #slideshow {
+     	width: 100%;
+        padding-top: 380px;
+     }
 
-        #slideshow {
-            width: 100%;
-            padding-top: 380px;
-        }
+     .nav-buttons {
+        visibility: hidden;
+     }
 
-        .nav-buttons {
-            visibility: hidden;
-        }
-
-        h1 {
-            font-size: 1.5rem;
+     h1 {
+        font-size: 1.5rem;
             
+     }
+     
+     .gomovie{
+     	margin-bottom: 10px;
+     }
+     
+     .gomovie-letters{
+     	
+     	font-size:1rem;
+     }
+        
+     .gomovie, .gomovie-letters{
+     	display:block;
+       	margin-left: 85px;
+        
+     }
+     
+     
+		
+	 .nav .nav-bar{
+	 	width: 80%;
+	 }
+	 
+	 .darkLight-searchBox{
+	 	margin-right:40px;
+	 }
+	 
+
+	 .menu-links{
+	 	margin-right:40px;
+	 }
+     .producto {
+        background-color: #1d1d1d;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        margin: 10px;
+        padding: 10px;
+        text-align: center;
+        width: 75%;
+      }
+	
+		
+
+      header {
+       	background-image: url("imagenes/header-img.jpg");
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 0 50px;
         }
 
-        .producto {
-            background-color: #1d1d1d;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            margin: 10px;
-            padding: 10px;
-            text-align: center;
-            width: 75%;
-        }
-
-
-        header {
-            background-image: url("imagenes/header-img.jpg");
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 0 50px;
-        }
-
-        header h1 {
-            font-size: 48px;
-            font-weight: bold;
-            text-align: center;
-            margin-bottom: 20px;
+      header h1 {
+          font-size: 48px;
+          font-weight: bold;
+          text-align: center;
+          margin-bottom: 20px;
         }
 
 
@@ -1933,44 +1964,247 @@
         .movies {
             width: 100%;
             margin: 20px auto;
+            
           }
           
-
-
-		/* ---- ----- ----- Ver Ahora Media Queries ----- ----- ----- */
-			   		/* ---- ----- ----- INDEX ----- ----- ----- */
+          nav .nav-bar{
+          	justify-content:center;
+          }
+          
+          
+          
+	/* ---- ----- ----- INDEX ----- ----- ----- */
           		
-	@media screen and (max-width: 800px) {
+	@media screen and (max-width: 768px) {
 			
 			.header-index h1{
 				font-size: 40px;
 			}
 			
-			
 			.register-btn {
-        	margin-right:30%;
-    }
+        		margin-right:30%;
+    		}
+    		
+    		.searchbox{
+    			margin-right:50px;
+    		}
+    		
+    		.gomovieIn, .gomovie-lettersIn{	
+    			margin:0px;
+    			
+    		}
+    		
+    		.darkLight-searchBox{
+    			margin-left:20px;
+    		}
+    		   		
+    		
 			
-			/* -------- FOOTER -------- */
+	}
+	
+	/* --------MENU HAMBURGUESA ---------*/
+		
+	@media screen and (max-width: 768px){
+	
+	.hamburger{
+		position:fixed;
+	  	background-color:transparent;
+		left:0;
+		top:0;
+		height:40px;
+		width:50px;
+		padding:20px 20px;
+		-webkit-transform:translate3d(0, 0, 0);
+		transform:translate3d(0, 0, 0);
+		-webkit-transition:-webkit-transform 0.25s cubic-bezier(0.05, 1.04, 0.72, 0.98);
+		transition:transform 0.25s cubic-bezier(0.05, 1.04, 0.72, 0.98);
+		z-index:1002;
+		cursor:pointer;
+		-webkit-user-select:none;
+		-moz-user-select:none;
+		-ms-user-select:none;
+		user-select:none
+	}
+	
+	.nav-links a{
+		width:100% !important;
+		heigth:100% !important;
+	}
+	
+	.nav-bar .nav-links li{
+		margin-bottom:5px;
+		border-bottom: 1px solid black;
+		width:160px;
+		text-align:center;
+	}
+	
+	
+	.hamburger.is-active{
+	  	background-color:none;
+	}
+	
+	._layer{
+		background:#ffffff;
+		margin-bottom:4px;
+		border-radius:2px;
+		width:28px;
+		height:4px;
+		opacity:1;
+		-webkit-transform:translate3d(0, 0, 0);
+		
+		-webkit-transition:all 0.25s cubic-bezier(0.05, 1.04, 0.72, 0.98);
+		transition:all 0.25s cubic-bezier(0.05, 1.04, 0.72, 0.98);
+		color:white;
+		margin-top: 2px;
+	}
+	
+	.hamburger:hover .-top{
+		-webkit-transform:translateY(-100%);
+		-ms-transform:translateY(-100%);
+		transform:translateY(-100%);
+	}
+	
+	.hamburger:hover .-bottom{
+		-webkit-transform:translateY(100%);
+		-ms-transform:translateY(100%);
+		transform:translateY(100%);
+		}
+		
+	.hamburger.is-active .-top{
+		-webkit-transform:translateY(200%) rotate(45deg) !important;
+		-ms-transform:translateY(200%) rotate(45deg) !important;
+		transform:translateY(200%) rotate(45deg) !important;
+	}
+	.hamburger.is-active .-mid{
+		opacity:0;
+	}
+	.hamburger.is-active .-bottom{
+		-webkit-transform:translateY(-200%) rotate(135deg) !important;
+		-ms-transform:translateY(-200%) rotate(135deg) !important;
+		transform:translateY(-200%) rotate(135deg) !important;
+	}
+	
+	.nav-links.is_active{
+	  transform: translate3d(0px, 0px, 0px);
+	  height: 131px;
+	  width: 164px;
+	  margin-top: 70px;
+	  background-color: #2a2a2a;
+	  display:flex;
+	  flex-direction:column;
+	  border-radius:5px;
+	  opacity: 80%;
+	  padding:10px;
+	  border: 1px solid #808080;
+	}
+	
+	.nav-links{
+		display:flex;
+		flex-direction:column;
+	    height: 142px;;
+	    left: 0;
+	    position: fixed;
+	    top: 0;
+	    transform: translate3d(0px, -100%, 0px);
+	    transition: transform 0.25s cubic-bezier(0.05, 1.04, 0.72, 0.98) 0s; 
+	    z-index: 1001;
+	    background-color:grey;
+	    opacity:80%;
+	    
+	    
+	}
+	
+	.nav-links.is_active li a{
+	width:20px;
+	padding:0px;
+	margin:0px;
+	}
+	
+	.nav-links ul{
+	  margin:0;
+	  padding:0;
+	}
+	
+	.nav-links ul li { 
+		display:;
+	  	list-style: none;
+		text-align:center;
+		font-family: Verdadna, Arial, Helvetica;
+		color:$nav-color-text;
+		font-size:0,5rem;
+		line-height:2em;
+		height:2em;
+	  	color:#369;
+		text-transform:none;
+		font-weight:bold;
+	}
+	
+	.nav-links ul li a:hover{
+	  text-decoration:none;
+	  color:#333;
+	}
+		
+}				
+	
+	/* -------- FOOTER -------- */
+    	    	
+    @media screen and (max-width: 768px){
+    
+    	.footer-extendables{
+    		height:150px;
+    	
+    	}
+    	
     	footer {
         background-color: #1d1d1d;
         color: #fff;
-        font-size: 12px;
-        padding:10px;
-    }
-}
+        font-size: 0.75rem;
+        padding:2px;
+    	 }
+	
+		.logo-gm{
+		
+		height:45px;	
+		
+		}
+		
+		.extendable h3{
+		margin-top: 30px;
+		font-size:0.8rem;
+		}
+		
+		.extendable a{
+			font-size:0.65rem;
+		}
+		.copyright{
+		margin-bottom:30px;
+			font-size:0.6rem;
+		}
+		
+		.extendable-logo{
+			display:flex;
+			align-items:center;
+			height:20px;
+		}
+		
+			    .footer-extendables{
+	    	margin-left:0px;
+	    }
+		
+    } 
+
 		/*----------Login--------------*/
 	
-	@media screen and (max-width: 800px) {
+	@media screen and (max-width: 768px) {
 	
 	
 		.container-login{
-		
-		height: 80vh;
+			padding:19% 8%;
+			height: 80vh;
 		
 		}
 		.container-login-int{
-			margin: 4vh auto 4vh auto;
+			margin-right:50%;
 			background-color: black;
 			width: 83vw;
 			height: 55vh;		
@@ -1983,8 +2217,6 @@
 			width: 100px;
 			display: block;
         }
-			
-		
     
     	.form-control{
     		display: block;
@@ -2005,19 +2237,13 @@
 	}
 	
 	/*-----------SECCION SIGNUP-------------*/
-	@media screen and (max-width: 800px) {
-	
-	
-		.container-signup{
+	@media screen and (max-width: 768px) {
 		
-		height: 80vh;
-		
-		}
 		.container-signup-int{
 			margin: 4vh auto 4vh auto;
 			background-color: black;
 			width: 83vw;
-			height: 55vh;		
+			height: 80vh;		
 			border-radius: 15px;
 			box-shadow: 7px 10px #EC1313;
 			
@@ -2066,8 +2292,10 @@
         margin-right: 0;
         margin-bottom: 20px;
       }
+      
+      
       .list img {
-        width: 100%;
+        width: 67%;
         height: auto;
       }
       .list div {
@@ -2077,7 +2305,7 @@
     }
 		
 		
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 768px) {
 
 	.pelicula-principal {
 		font-size: 14px;
@@ -2102,17 +2330,9 @@
 	.peliculas-recomendadas .flecha-derecha {
 		display: none;
 	}
-}
 
-
-}
-
-	/*---------------Proximamente---------------*/
-	
-	
-    @media only screen and (max-width: 768px)
-     {
-      #mainLista {
+	   #mainLista {
+	   
         padding: 20px;
       }
       .list ul {
@@ -2133,7 +2353,111 @@
       }
     }
 
-/* ----------------Lightbox-----------------*/
+	/*---------------PROXIMAMENTE---------------*/
+	
+	/*----------------OFERTAS-----------------*/
+    @media only screen and (max-width: 768px){}
+     
+	    .header-content{
+	    	height:230px;
+	    	width:359px;
+	    	margin-right:15px;
+	    }
+	    
+	    .rebajaFoto{
+	    	width:100px;
+	    	heigth:350px;
+	    	margin-top:0px;
+	    }
+	    
+	    .img-carousel{
+	    	width:150px;
+	    	height:150px;
+	    }
+	    
+	    .tabla{
+    		font-size:0.70rem;
+    		
+    	}
+    	
+    	.section-of{
+    		overflow-x:scroll;
+    	}
+    	
+    	.gomovieOf{
+    		margin-left:0px;
+    	}
+    		
+		.rebaja{
+			height:40px;
+			width:266px;
+		}
+		
+		.gomovie-of, .gomovie-lettersof{
+     		margin-left:91px;
+     }
+    
+    }
+    /*----------------OFERTAS-----------------*/
+    
+    
+    
+    /*----------------ADMINISTRACION-----------------*/
+    	.gomovie-admin{
+    		margin-top:40px;
+    		font-size:2.5rem;
+    	}
+    /*----------------ADMINISTRACION-----------------*/
+    
+    
+    /*----------------TU LISTA	-----------------*/
+    		
+    	.pelicula-cover{
+    		margin:55px 0 30px 0;
+    	}
+    	.pelicula-title{
+    		font-size: 2rem;
+    	}	
+    	
+    	.pelicula-description{
+    		font-size:0.7rem;
+    	}
+    	
+    	.pelicula-info{
+    		display:flex;
+    		flex-direction:column;
+    	}
+    		
+    /*----------------TU LISTA	-----------------*/
+    
+     /*----------------CARRITO-----------------*/
+     
+     	.row{
+     		flex-direction:column;
+     		item-align:center;
+     	}
+     	
+     	.caja-roja2{
+     		width:63%;
+     		
+     	}
+     	
+     	.img-carrito{
+     		margin-left:20px;
+     	}
+     	
+     	.detalle-carrito{
+     		margin-right:30px;
+     		text-align:center;
+     	}
+     	
+     	.opciones-carrito{
+     		margin-left:0px;
+     	}
+     
+      /*----------------CARRITO-----------------*/
+
+/* ----------------LIGHTBOX-----------------*/
 
 	.lightbox {
 	  background-color: fade(black, 80%);  
@@ -2154,7 +2478,7 @@
 	    padding: 0 3%;
 	    height: auto;
 	    z-index: 10;
-	    
+	  
 	    // Increasing top margin for mobile
 	    @media screen and (max-width: 768px) { margin-top: 10%; }
 	    @media screen and (max-width: 414px) { margin-top: 13%; }

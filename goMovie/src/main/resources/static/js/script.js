@@ -80,10 +80,12 @@
 		var pagesToScroll = ["/fantasia", "/drama", "/romantico", "/comedia", "/infantil", "/accion", "/todas"];
 	
 		if (pagesToScroll.includes(currentPage)) {
-			var element = document.getElementById("tituloGo");
+			var element = document.getElementById("separador");
 			
 			if (element) {
-				element.scrollIntoView({});
+				element.scrollIntoView({ behavior: 'smooth' });
 			}
 		}
 	};
+	
+		

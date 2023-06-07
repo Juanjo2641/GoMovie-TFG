@@ -13,10 +13,14 @@
         <div class="nav-bar">
             <div class="menu">
                 <span class="logo navLogo"> <a title="inicio" th:href="@{/inicio}" id="texttttt">
-                	<h1 class="gomovie">🎬 GoMovie!</h1>
+                	<h1 class="gomovie">🎬</h1><h1 class="gomovie-letters">GoMovie!</h1>
                 </a></span>
             </div>
-
+			<div class="hamburger">
+				<div class="_layer -top"></div>
+				<div class="_layer -mid"></div>
+				<div class="_layer -bottom"></div>
+			</div>
             <div class="menu-links">
                 <ul class="nav-links">
                     <li><a th:href="@{/inicio}">Películas</a></li>
@@ -102,12 +106,12 @@
 				<a th:href="@{/accion}"> Acción </a>
             </div>
         </div>
-        <a class="my-button" th:href="@{/todas}">Mostrar todas</a>
+        <a class="my-button" th:href="@{/todas}" >Mostrar todas</a>
     </div>
 
-    <main id="mainInicio">
+    <main id="mainInicio" >
 
-        <div class="row">
+        <div class="row" id="elementos">
             <div class="producto" th:each="pelicula: ${peliculas}">
 
                 <div class="fotoPelicula">
@@ -194,6 +198,7 @@
     <footer th:replace="index :: footer"></footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../js/script.js"></script>
+    <script th:src="@{/js/script.js}"></script>
+    <script th:src="@{/js/hamburguer.js}"></script>
 </body>
 </html>

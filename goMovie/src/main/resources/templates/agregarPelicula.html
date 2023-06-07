@@ -12,27 +12,30 @@
 	<link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet" />
 </head>
 
-	<body>
-
-    		<div> 
+<body>
+		
+		
+	<div class="alturaCont">
+		<div class="container-admin-int">
+    		<div class="formPeli"> 
     		    <h1>Añadir película:</h1>
       			<form th:action="${'/guardarPelicula'}" method="POST" th:object="${pelicula}">
 
       				<div>
 	                	<label>Nombre</label>
-	                	<input type="text" id="nombre" name="nombre" required>
+	                	<input type="text" id="nombre" name="nombre" class="inputAdmin" required>
 	                    <br>
 	                    
 						<label>Descripción</label>
-						<textarea id="descripcion" name="descripcion" required></textarea>
+						<textarea id="descripcion" name="descripcion" class="inputAdmin" required></textarea>
 						<br>
 						
 	                    <label>Precio</label>
-	                	<input type="number" step="0.01" id="precio" name="precio" required>
+	                	<input type="number" step="0.01" id="precio" class="inputAdmin" name="precio" required>
 	                	<br>
 	                	
 	                    <label>Stock</label>
-	                	<input type="number" id="stock" name="stock" required>
+	                	<input type="number" id="stock" name="stock" class="inputAdmin" required>
 	                	<br>
 	                	
 						<label>Género:</label>
@@ -51,18 +54,19 @@
 						<br>
 						
 					</div>
-					
-					
+					<div class="btn-agregarP">
+						<a th:href="@{/administracion}"><button type="button" class="btn-perfil">Volver</button></a>
 					
 	                    <button class="btn-perfil" type="submit" >Enviar</button>
-					
+					</div>	
       			</form>
     		</div>
+    	</div>
+    </div>
 		
     
 	<footer th:replace="index :: footer"></footer>
 
     <script src="js/scripts.js"></script>
-
-  </body>
+</body>
 </html>

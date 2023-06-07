@@ -11,8 +11,6 @@
 <body>
   <nav th:replace="inicio :: nav"></nav>
 
-
-
     <header id="headerLista" >
       <div class="pelicula-info">
         <img class="pelicula-cover"  alt="Movie Cover" th:src="${peliculaDestacada.foto}">
@@ -61,8 +59,8 @@
 	<footer th:replace="index :: footer"></footer>
 
   <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
-  <script src="../js/script.js"></script>
-  <script src="../js/main.js"></script>
+  <script th:src="@{/js/hamburguer.js}"></script>
+  <script th:src="@{/js/main.js}"></script>
 
 </body>
 </html>

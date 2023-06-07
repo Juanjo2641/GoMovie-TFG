@@ -57,24 +57,27 @@
                 <div class="rowPerfil">
                     <h2 class="titulosh2">Tus compras:</h2>
 
-                    <table class="table">
-						<thead>
-							<tr>
-								<th>Pedido</th>
-                                <th>Dirección</th>
-								<th>Total</th>
-								<th></th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr th:each="orden: ${ordenes}">
-								<td th:text="${orden.fecha_creacion}"></td>
-                                <td th:text="${orden.direccion}"></td>
-								<td th:text="${orden.total}+€"></td>
-								<td><a th:href="@{/detallecompra/{id_orden} (id_orden=${orden.id}) }" class="btn btn-primary">Detalles</a></td>
-                            </tr>
-                        </tbody>
-					</table>
+                    <div class="contenedorTabla">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Pedido</th>
+                                    <th>Dirección</th>
+                                    <th>Total</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="orden: ${ordenes}">
+                                    <td th:text="${orden.fecha_creacion}"></td>
+                                    <td th:text="${orden.direccion}"></td>
+                                    <td th:text="${orden.total}+€"></td>
+                                    <td><a th:href="@{/detallecompra/{id_orden} (id_orden=${orden.id}) }" class="btn btn-primary">Detalles</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -87,8 +90,8 @@
 
     <footer th:replace="index :: footer"></footer>
 
-
-    <script src="../js/script.js"></script>detal
+	<script th:src="@{/js/hamburguer.js}"></script>
+    <script th:src="@{/js/script.js}"></script>
 
 </body>
 </html>
