@@ -525,7 +525,6 @@
         justify-content: space-around;
         margin-bottom: 20px;
         width: 100%;
-        padding: 0 2px;
     }
 
     .producto {
@@ -841,6 +840,18 @@
     
 
     /* -------- CARRITO -------- */
+    .fotoRow{
+        padding: 5px;
+    }
+
+    .contenidoRow{
+        margin-left: 0px;
+    }
+
+    .contenidoBor{
+        padding: 10px;
+    }
+
     .botones{
         height: 35px;
         width: 30px;
@@ -886,12 +897,18 @@
         transition: 300ms all;
     }
 
+    .ordenCarro{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
     .caja-roja2 {
         display: block;
         margin: auto;
         border: 2px solid red;
         padding: 40px 40px 20px 40px;
-        width: 50%;
+        width: 70%;
     }
 
     .miCesta{
