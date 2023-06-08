@@ -25,14 +25,14 @@
         </div>
 
         <div class="caja-roja2">
-            <div class="row">
+            <div class="rowCarrito">
                 <div th:each="orden:${carrito}">
                     <div class="card" style="width: 50vw">
                         <div class="row">
-                            <div class="col-md-2 img-carrito">
+                            <div class="col-md-2 ">
                                 <img th:src="${orden.foto}" class="img-fluid rounded-start" style="max-height: 150px; max-width: 230px">
                             </div>
-                            <div class="col-md-5 detalle-carrito">
+                            <div class="col-md-5">
                                 <div class="card-body">
                                     <h5 class="card-title" th:text="${orden.nombre}"></h5>
                                     <p class="card-text text-muted" th:text="${orden.precio}+€"></p>
@@ -42,7 +42,7 @@
                                     <span th:if="${orden.pelicula.stock <= 0}">No quedan artículos</span>
                                 </div>
                             </div>
-                            <div class="opciones-carrito">
+                            <div >
 
                                 <a th:href="@{/delete/cart/{id} (id=${orden.pelicula.id_pelicula}) }" class="borrar">Borrar</a>
 

@@ -112,6 +112,7 @@
     <main id="mainInicio" >
 
         <div class="row" id="elementos">
+
             <div class="producto" th:each="pelicula: ${peliculas}">
 
                 <div class="fotoPelicula">
@@ -123,14 +124,17 @@
 
                 <div class="elementos">
 
-                    <div>
+                    <div class="contenidoCarta">
 
                         <a class="tituloPelicula" th:href="@{/detalles/} + ${pelicula.id_pelicula}"><h2 id="h2Inicio" th:text="${pelicula.nombre}">Movie Title</h2></a>
-                        <th:block th:each="tag : ${pelicula.tags}">
-                            <a th:href="@{'/' + ${tag.nombre}}"><span th:text="' [ ' + ${tag.nombre} + ' ] '"></span></a>
-                        </th:block>
 
-                        <br>
+                        <div class="tags">
+
+                            <th:block th:each="tag : ${pelicula.tags}">
+                                <a th:href="@{'/' + ${tag.nombre}}"><span th:text="' [ ' + ${tag.nombre} + ' ] '"></span></a>
+                            </th:block>
+
+                        </div>
 
                         <form th:action="@{/deseada}" method="post" class="inline-form">
 								

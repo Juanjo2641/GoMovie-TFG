@@ -15,15 +15,20 @@
 
         <img class="img-detalles" th:src="${pelicula.foto}" th:alt="${pelicula.nombre}">
 
-		<h1 th:text="${pelicula.nombre}"></h1>
-		<del  th:if="${pelicula.rebaja} > 0"><h3 class="rebaja-del" th:text="${pelicula.precio} + '€'"></h3></del>
-		<h3 th:if="${pelicula.rebaja} <= 0" th:text="${pelicula.precio} + '€'"></h3>
-		<h3 th:if="${pelicula.rebaja} > 0" th:text="${precioFinal} + '€'"></h3>
-		<h5 th:text="${pelicula.genero.nombre}"></h5>
-		<h5 th:text="${pelicula.duracion}"></h5>
-		<div class="cuadrante">
-			⭐&nbsp;<span th:text="${pelicula.puntuacion}"> </span>&nbsp;/ 5
+		<h1 class="tituloPeliculaDet" th:text="${pelicula.nombre}"></h1>
+
+		<div class="textosDetalles">
+
+			<del  th:if="${pelicula.rebaja} > 0"><h3 class="rebaja-del" th:text="${pelicula.precio} + '€'"></h3></del>
+			<h3 th:if="${pelicula.rebaja} <= 0" th:text="${pelicula.precio} + '€'"></h3>
+			<h3 th:if="${pelicula.rebaja} > 0" th:text="${precioFinal} + '€'"></h3>
+			<h5 th:text="${pelicula.genero.nombre}"></h5>
+			<h5 th:text="${pelicula.duracion}"></h5>
+			<div class="cuadrante">
+				⭐&nbsp;<span th:text="${pelicula.puntuacion}"> </span>&nbsp;/ 5
+			</div>
 		</div>
+
 		<div class="caja-roja"> <p th:text="${pelicula.descripcion}"></p> </div>
 
 		<div class="formulariosAlign">
